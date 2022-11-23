@@ -1,0 +1,11 @@
+*, *:before, *:after {box-sizing:border-box; padding:0; margin:0}
+
+.landing-page-header{
+    height: 75px;
+    width: 100%;
+    border: 5px solid black;
+}
+
+p{
+    color: orange;
+}
