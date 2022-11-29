@@ -34,12 +34,12 @@
     <div id="account-btn-div">
         <button id="account-form-btn" onclick="toggle()">Register</button>
     </div>
-    <form id="login-form" class="account-form" action="">
+    <form id="login-form" class="account-form" action="/login" method="post">
         <h3>Login</h3>
         <input type="text" name="login-email" id="login-email" placeholder="Email">
         <input type="text" name="login-pass" id="login-pass" placeholder="Password">
     </form>
-    <form id="register-form" class="account-form" action="" style="display: none">
+    <form id="register-form" class="account-form" action="/register" method="post" style="display: none">
         <h3>Register</h3>
         <select name="reg-role" id="reg-role" onchange="checkPatient(this.value)">
             <option value="" disabled selected>Role:</option>
