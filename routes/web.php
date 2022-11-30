@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+return view('patientinfo');
+});
+
     return view('login-register');
 });
 
@@ -60,3 +63,4 @@ Route::get('/adminReport', function () {
 Route::get('/payments', function () {
     return view('payments');
 });
+
