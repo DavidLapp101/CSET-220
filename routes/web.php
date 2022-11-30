@@ -52,3 +52,11 @@ Route::get('/newRoster', function () {
 Route::get('/patientOfDoctor', function () {
     return view('patient-of-doctor');
 });
+
+Route::get('/adminReport', function () {
+    return view('admin-report');
+});
+
+Route::get('/payments', function () {
+    return view('payments');
+});
