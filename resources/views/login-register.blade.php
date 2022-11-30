@@ -37,6 +37,10 @@
         <button id="account-form-btn" onclick="toggle()">Register</button>
     </div>
     <form id="login-form" class="account-form" action="/login" method="post">
+
+
+    
+
         <h3>Login</h3>
         <input type="text" name="login-email" id="login-email" placeholder="Email">
         <input type="text" name="login-pass" id="login-pass" placeholder="Password">
