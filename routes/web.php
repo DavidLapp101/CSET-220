@@ -14,10 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-return view('patientinfo');
+    return view('login-register');
+
 });
 
-    return view('login-register');
+Route::get('/patientInfo', function(){
+    return view('patientinfo');
 });
 
 Route::get('/land', function () {
