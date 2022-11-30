@@ -33,7 +33,7 @@
 <body>
     <div id="account-btn-div">
         <button id="account-form-btn" onclick="toggle()">Register</button>
-    </div>
+    </div>  
     <form id="login-form" class="account-form" action="">
         <h3>Login</h3>
         <input type="text" name="login-email" id="login-email" placeholder="Email">
