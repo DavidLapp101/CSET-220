@@ -1,34 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-    <header class="landing-page-header">
-        <p>Header</p>
-    </header>
+@extends('header')
+ 
+@section('title', 'Page Title')
 
-
-
+ 
+@section('content')
     {{-- ADMIN HOME PAGE --}}
     <div class="land_level1" id="land_level1" style="display: none">
         <p>Admin</p>
-        <form class="admin-choose-page">
-            <select name="Page" onchange="location = this.value;">
-                <option value="/land">Home</option>
-                <option value="#">Doctor Appointment</option>
-                <option value="#">Additional Info</option>
-                <option value="#">Role</option>
-                <option value="#">Employee</option>
-                <option value="#">Patients</option>
-                <option value="#">Registration Approval</option>
-                <option value="#">Roster</option>
-                <option value="#">New Roster</option>
-                <option value="#">Admins Report</option>
-                <option value="#">Payment</option>
-                <option value="/">Logout</option>
-            </select>
-        </form> 
     </div>
 
 
@@ -37,19 +15,6 @@
     {{-- SUPERVISOR HOME PAGE --}}
     <div class="land_level2" id="land_level2" style="display: none">
         <p>Supervisor</p>
-        <form class="supervisor-choose-page">
-            <select name="Page" onchange="location = this.value;">
-                <option value="/land">Home</option>
-                <option value="#">Doctor Appointment</option>
-                <option value="#">Additional Info</option>
-                <option value="#">Employee View Only</option>
-                <option value="#">Patients</option>
-                <option value="#">Registration Approval</option>
-                <option value="#">Roster</option>
-                <option value="#">New Roster</option>
-                <option value="/">Logout</option>
-            </select>
-        </form> 
     </div>
 
 
@@ -66,19 +31,6 @@
                 <option value="/">Logout</option>
             </select>
         </form> 
-        <form class="landing-page-doctor-search">
-            <select name="landing-page-doctor-search-filter" required>
-                <option selected disabled>Filter</option>
-                <option value="name">Name</option>
-                <option value="date">Date</option>
-                <option value="Comment">Comment</option>
-                <option value="Morning_Med">Morning Med</option>
-                <option value="Afternoon_Med">Afternoon Med</option>
-                <option value="Evening_Med">Evening Med</option>
-            </select>
-            <input type="text" value="Search" required>
-            <input type="submit" value="Submit">
-        </form>
         <table>
             <tr>
                 <th>Name</th>
@@ -107,14 +59,6 @@
     {{-- CAREGIVER HOME PAGE --}}
     <div class="land_level4" id="land_level4" style="display: none">
         <p>Caregiver</p>
-        <form class="caregiver-choose-page">
-            <select name="Page" onchange="location = this.value;">
-                <option value="/land">Home</option>
-                <option value="#">Patients</option>
-                <option value="#">Roster</option>
-                <option value="/">Logout</option>
-            </select>
-        </form>
         <form class="landing-page-caregiver-table">
             <table>
                 <tr>
@@ -146,14 +90,6 @@
     {{-- PATIENT HOME PAGE --}}
     <div class="land_level5" id="land_level5" style="display: none">
         <p>Patient</p>
-        <form class="caregiver-choose-page">
-            <select name="Page" onchange="location = this.value;">
-                <option value="/land">Home</option>
-                <option value="#">Patients</option>
-                <option value="#">Roster</option>
-                <option value="/">Logout</option>
-            </select>
-        </form> 
         <div class="landing-page-patient-home">
             <p>Patient ID: #############</p>
             <p>Date: #############</p>
@@ -191,13 +127,6 @@
     {{-- FAMILY MEMEBER HOME PAGE --}}
     <div class="land_level6" id="land_level6" style="display: none">
         <p>Family Member</p>
-        <form class="family-member-choose-page">
-            <select name="Page" onchange="location = this.value;">
-                <option value="/land">Home</option>
-                <option value="#">Roster</option>
-                <option value="/">Logout</option>
-            </select>
-        </form> 
         <form class="landing-page-family-member-patient-info">
             <input type="date" id="date" required>
             <input type="text" id="family_code" required>
@@ -236,31 +165,31 @@
 
     <script>
 
-        $userID=6;
-        if($userID==1){
+        let userID=4;
+        if(userID==1){
             const access1 = document.getElementById('land_level1');
             access1.style.display = 'block';
         }
-        else if($userID==2){
+        else if(userID==2){
             const access2 = document.getElementById('land_level2');
             access2.style.display = 'block';
         }
-        else if($userID==3){
+        else if(userID==3){
             const access3 = document.getElementById('land_level3');
             access3.style.display = 'block';
         }
-        else if($userID==4){
+        else if(userID==4){
             const access4 = document.getElementById('land_level4');
             access4.style.display = 'block';
         }
-        else if($userID==5){
+        else if(userID==5){
             const access5 = document.getElementById('land_level5');
             access5.style.display = 'block';
         }
-        else if($userID==6){
+        else if(userID==6){
             const access6 = document.getElementById('land_level6');
             access6.style.display = 'block';
         }
     </script>
-</body>
-</html>
+
+@stop
