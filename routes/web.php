@@ -48,3 +48,7 @@ Route::get('/accountApproval', function () {
 Route::get('/newRoster', function () {
     return view('new-roster');
 });
+
+Route::get('/patientOfDoctor', function () {
+    return view('patient-of-doctor');
+});
