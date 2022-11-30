@@ -1,5 +1,9 @@
-<!DOCTYPE html>
-<html>
+@extends('header')
+ 
+@section('title', 'Page Title')
+
+ 
+@section('content')
     <h1>New Roster</h1>
     <form action="">
         <input type="date">
@@ -36,4 +40,4 @@
         <input type="submit" value="OK">
         <a href="">Cancel</a>
     </form>
-</html>
+@stop

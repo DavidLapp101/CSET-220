@@ -1,7 +1,12 @@
 <?php
 session_start()
 ?>
-<html>
+@extends('header')
+ 
+@section('title', 'Page Title')
+
+ 
+@section('content')
 <head>
     <link rel="stylesheet" href="{{ asset('css/patientinfo.css') }}">
     <h1>Additional Patient Information</h1>
@@ -33,5 +38,5 @@ session_start()
         </div>
     </form>
 </body>
-</html>
+@stop
 

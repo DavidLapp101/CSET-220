@@ -34,10 +34,6 @@ Route::get('/role', function () {
     return view('roles');
 });
 
-Route::get('/patientHome', function () {
-    return view('patient-home');
-});
-
 Route::get('/employees', function () {
     return view('employees');
 });
