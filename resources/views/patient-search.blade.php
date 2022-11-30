@@ -1,5 +1,9 @@
-<!DOCTYPE html>
-<html>
+@extends('header')
+ 
+@section('title', 'Page Title')
+
+ 
+@section('content')
     <h1>Patient Search</h1>
     <div>
         <form action="">
@@ -14,5 +18,9 @@
             </select>
             <input type="text">
         </form>
+        <script>
+            // const patients = document.getElementById('mh-patients');
+            // patients.selected = 'true';
+        </script>
     </div>
-</html>
+@stop

@@ -1,5 +1,9 @@
-<!DOCTYPE html>
-<html>
+@extends('header')
+ 
+@section('title', 'Page Title')
+
+ 
+@section('content')
     <h1>Registration Approval</h1>
 
     <div>
@@ -25,4 +29,4 @@
             <input type="submit" value="Approve/Decline">
         </form>
     </div>
-</html>
+@stop
