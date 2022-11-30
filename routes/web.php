@@ -44,3 +44,7 @@ Route::get('/patientSearch', function () {
 Route::get('/accountApproval', function () {
     return view('account-approval');
 });
+
+Route::get('/newRoster', function () {
+    return view('new-roster');
+});
