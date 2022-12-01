@@ -1,5 +1,9 @@
-<!DOCTYPE html>
-<html>
+@extends('header')
+ 
+@section('title', 'Page Title')
+
+ 
+@section('content')
     <h1>Payments</h1>
     <div>
         <form action="">
@@ -11,4 +15,4 @@
         </form>
         
     </div>
-</html>
+@stop
