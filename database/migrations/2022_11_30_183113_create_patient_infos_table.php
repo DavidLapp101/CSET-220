@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('patientinfo', function (Blueprint $table) {
             $table->integer("userID");
             $table->string("familyCode");
-            $table->integer("emergencyContact");
+            $table->bigInteger("emergencyContact");
             $table->string("contactName");
             $table->string("contactRelation");
             $table->integer("groupNum");

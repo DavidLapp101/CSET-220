@@ -1,10 +1,13 @@
 <html>
+    <?php session_start() ?>
     <head>
         <title>App Name - @yield('title')</title>
         <link rel="stylesheet" href="/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     </head>
     <body>
-        HELLO
+        <p id="test-user-name"><?php echo($_SESSION["name"]); ?></p>
+        <p id="test-user-level"><?php echo($_SESSION["accessLevel"]); ?></p>
         <div class="master-header">
             <div class="master-header-left">
                 Welcome!!
@@ -32,7 +35,7 @@
             @yield('content')
         </div>
         <script>
-            let accessLevel=3;
+            let dropdownAccess = parseInt(document.getElementById("test-user-level").innerHTML);
 
             const docAppointment = document.getElementById('mh-doctor-appointment');
             const addInfo = document.getElementById('mh-additional-info');
@@ -45,7 +48,7 @@
             const payment = document.getElementById('mh-payment');
 
             //ADMIN
-            if(accessLevel==1){
+            if(dropdownAccess==1){
                 docAppointment.style.display = 'block';
                 addInfo.style.display = 'block';
                 role.style.display = 'block';
@@ -57,7 +60,7 @@
                 payment.style.display = 'block';
             }
             //SUPERVISOR
-            else if(accessLevel==2){
+            else if(dropdownAccess==2){
                 docAppointment.style.display = 'block';
                 addInfo.style.display = 'block';
                 employee.style.display = 'block';
@@ -66,19 +69,19 @@
                 newRoster.style.display = 'block';
             }
             //DOCTOR
-            else if(accessLevel==3){
+            else if(dropdownAccess==3){
                 patients.style.display = 'block';
             }
             //CAREGIVER
-            else if(accessLevel==4){
+            else if(dropdownAccess==4){
                 patients.style.display = 'block';
             }
             //PATIENT
-            else if(accessLevel==5){
+            else if(dropdownAccess==5){
                 patients.style.display = 'block';
             }
             //PATIENT FAMILY
-            else if(accessLevel==6){
+            else if(dropdownAccess==6){
                 let access6 = document.getElementById('land_level6');
                 access6.style.display = 'block';
             }

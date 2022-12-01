@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer("roleID");
             $table->string('name');
             $table->string('email')->unique();
-            $table->integer('phone')->unique();
+            $table->bigInteger('phone')->unique();
             $table->string('password');
             $table->date('dateOfBirth');
             $table->string('accountStatus');
