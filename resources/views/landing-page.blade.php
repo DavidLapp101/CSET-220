@@ -4,6 +4,7 @@
 
  
 @section('content')
+
     {{-- ADMIN HOME PAGE --}}
     <div class="land_level1" id="land_level1" style="display: none">
         <p>Admin</p>
@@ -165,31 +166,33 @@
 
     <script>
 
-        let userID=1;
-        if(userID==1){
+
+        let accessLevel = parseInt(document.getElementById("test-user-level").innerHTML);
+        if(accessLevel==1){
             const access1 = document.getElementById('land_level1');
             access1.style.display = 'block';
         }
-        else if(userID==2){
+        else if(accessLevel==2){
             const access2 = document.getElementById('land_level2');
             access2.style.display = 'block';
         }
-        else if(userID==3){
+        else if(accessLevel==3){
             const access3 = document.getElementById('land_level3');
             access3.style.display = 'block';
         }
-        else if(userID==4){
+        else if(accessLevel==4){
             const access4 = document.getElementById('land_level4');
             access4.style.display = 'block';
         }
-        else if(userID==5){
+        else if(accessLevel==5){
             const access5 = document.getElementById('land_level5');
             access5.style.display = 'block';
         }
-        else if(userID==6){
+        else if(accessLevel==6){
             const access6 = document.getElementById('land_level6');
             access6.style.display = 'block';
         }
+
     </script>
 
 @stop
