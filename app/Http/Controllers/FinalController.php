@@ -69,7 +69,6 @@ class FinalController extends Controller
 
         $user = User::where('email', $fields['login-email'])->first();
 
-
         if (!$user || !Hash::check($fields['login-pass'], $user->password)) {
             $_POST["login-info"] = "incorrect";
             return view("login-register");
