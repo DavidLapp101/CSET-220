@@ -14,11 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-return view('patientinfo');
+    return view('login-register');
+
 });
 
 //     return view('login-register');
 // });
+
+Route::get('/patientInfo', function(){
+    return view('patientinfo');
+});
 
 Route::get('/land', function () {
     return view('landing-page');
@@ -30,10 +35,6 @@ Route::get('/newAppointment', function () {
 
 Route::get('/role', function () {
     return view('roles');
-});
-
-Route::get('/patientHome', function () {
-    return view('patient-home');
 });
 
 Route::get('/employees', function () {
@@ -64,3 +65,6 @@ Route::get('/payments', function () {
     return view('payments');
 });
 
+Route::get('/roster', function () {
+    return view('roster');
+});

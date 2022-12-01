@@ -1,5 +1,9 @@
-<!DOCTYPE html>
-<html>
+@extends('header')
+ 
+@section('title', 'Page Title')
+
+ 
+@section('content')
     <h1>Employee</h1>
     <div>
         <form action="">
@@ -32,4 +36,4 @@
             <a href="">Cancel</a>
         </form>
     </div>
-</html>
+@stop

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <link rel="stylesheet" href="{{ asset('css/newRoster.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/newRoster.css') }}"> 
     <h1>New Roster</h1>
     <form action="">
         <input type="date">
