@@ -168,6 +168,7 @@
 
     <script>
 
+
         let accessLevel = parseInt(document.getElementById("test-user-level").innerHTML);
         if(accessLevel==1){
             const access1 = document.getElementById('land_level1');

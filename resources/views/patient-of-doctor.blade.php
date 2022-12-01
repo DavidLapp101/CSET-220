@@ -1,5 +1,9 @@
-<!DOCTYPE html>
-<html>
+@extends('header')
+ 
+@section('title', 'Page Title')
+
+ 
+@section('content')
     <h1>Patient of Doctor</h1>
     <div>
         <h2>Patient name here:</h2>
@@ -34,4 +38,4 @@
 
         </form>
     </div>
-</html>
+@stop
