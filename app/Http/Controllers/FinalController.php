@@ -38,4 +38,18 @@ class FinalController extends Controller
         return redirect('/land');
 
     }
+
+    public function acceptDeclineUsers(Request $request){
+
+        $user = $request->input('user');
+        $action = $request->input('approve/decline');
+        if($action == 'accept'){
+            User::where('userID', $user)->update(['accountStatus' => "approved"]);
+            
+        }
+        else{
+            User::where('userID', $user)->update(['accountStatus' => "declined"]);
+        }
+        return redirect('/accountApproval');
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\patientinfoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,9 +43,9 @@ Route::get('/patientSearch', function () {
     return view('patient-search');
 });
 
-Route::get('/accountApproval', function () {
-    return view('account-approval');
-});
+Route::get('/accountApproval',[patientinfoController::class, 'pendingUsers' ]);
+
+// route::post('/acceptDecline', [FinalController::class, 'acceptDeclineUsers']);
 
 Route::get('/newRoster', function () {
     return view('new-roster');
