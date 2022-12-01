@@ -36,14 +36,22 @@
     <div id="account-btn-div">
         <button id="account-form-btn" onclick="toggle()">Register</button>
     </div>
-    <form id="login-form" class="account-form" action="/login" method="post">
-
-
+    <?php
+        if (isset($_POST["login-info"])) {
+            if ($_POST["login-info"] == "incorrect") {
+                echo ("<p style='color: red;'>Incorrect Information</p>");
+            }
+            else if ($_POST["login-info"] == "pending") {
+                echo ("<p style='color: red;'>Your account has not been approved</p>");
+            }
+        }
+    ?>
     
-
+    <form id="login-form" class="account-form" action="/api/login" method="post">
         <h3>Login</h3>
         <input type="text" name="login-email" id="login-email" placeholder="Email">
         <input type="text" name="login-pass" id="login-pass" placeholder="Password">
+        <input type="submit" name="Submit">
     </form>
     <form id="register-form" class="account-form" action="/api/register" method="post" style="display: none">
         <h3>Register</h3>
