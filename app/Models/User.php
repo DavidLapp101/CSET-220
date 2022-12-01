@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'roleID',
+        'name',
+        'email',
+        'phone',
+        'password',
+        'dateOfBirth',
+        'accountStatus'
+    ];
+
+    protected $hidden = [
+        'password',
+    ];
 }

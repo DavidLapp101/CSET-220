@@ -19,6 +19,9 @@ Route::get('/', function () {
 
 });
 
+//     return view('login-register');
+// });
+
 Route::get('/patientInfo', function(){
     return view('patientinfo');
 });

@@ -6,17 +6,20 @@
 @section('content')
     <h1>Patient Search</h1>
     <div>
-        <form action="">
+        <form action="" class="search-form">
             <label for="patientSearch">Search By:</label>
-            <select name="patientSearch">
-                <option selected="true" value="ID">Patient ID</option>
-                <option value="name">Name</option>
-                <option value="age">Age</option>
-                <option value="eContactNum">Emergency Contact Number</option>
-                <option value="eContactName">Emergency Contact Name</option>
-                <option value="date">Admission Date</option>
-            </select>
-            <input type="text">
+            <div>
+                <select name="patientSearch" class="search-filter">
+                    <option selected="true" value="ID">Patient ID</option>
+                    <option value="name">Name</option>
+                    <option value="age">Age</option>
+                    <option value="eContactNum">Emergency Contact Number</option>
+                    <option value="eContactName">Emergency Contact Name</option>
+                    <option value="date">Admission Date</option>
+                </select>
+                <input type="text" class="search-input" placeholder="Search">
+                <button type="submit" class="search-submit"><ion-icon name="search-outline"></ion-icon></button>
+            </div>
         </form>
         <script>
             // const patients = document.getElementById('mh-patients');
