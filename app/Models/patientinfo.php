@@ -23,3 +23,4 @@ class patientinfo extends Model
     ];
 
 }
+
