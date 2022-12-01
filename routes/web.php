@@ -17,8 +17,8 @@ Route::get('/', function () {
 return view('patientinfo');
 });
 
-    return view('login-register');
-});
+//     return view('login-register');
+// });
 
 Route::get('/land', function () {
     return view('landing-page');
