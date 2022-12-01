@@ -9,6 +9,8 @@ class PatientInfo extends Model
 {
     use HasFactory;
 
+
+
     protected $table = "patientinfo";
 
     protected $fillable = [
@@ -21,4 +23,5 @@ class PatientInfo extends Model
         'admissionDate',
         'balance'
     ];
+
 }

@@ -1,3 +1,9 @@
+@extends('header')
+ 
+@section('title', 'Page Title')
+
+ 
+@section('content')
 <!DOCTYPE html>
 <html>
     <h1>Roster</h1>
