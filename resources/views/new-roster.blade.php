@@ -1,12 +1,10 @@
-@extends('header')
- 
-@section('title', 'Page Title')
-
- 
-@section('content')
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="{{ asset('css/newRoster.css') }}"> 
     <h1>New Roster</h1>
     <form action="">
         <input type="date">
+        <br>
         <label for="supervisor">Supervisor:</label>
         <select name="supervisor" id="">
             <option value=""></option>
@@ -38,6 +36,6 @@
         </select>
         <br>
         <input type="submit" value="OK">
-        <a href="">Cancel</a>
+        <button>Cancel</button>
     </form>
-@stop
+</html>
