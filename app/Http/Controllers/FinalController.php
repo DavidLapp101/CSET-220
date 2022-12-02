@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PatientInfo;
 use App\Models\Role;
+use App\Models\Salary;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -37,8 +38,14 @@ class FinalController extends Controller
             'dateOfBirth' => $fields['reg-dob'],
         ]);
 
-        if ($fields["reg-role"] == 5) {
-            $userID = json_decode(json_encode(DB::select("select userID from users order by created_at desc limit 1;")), true)[0]["userID"];
+        $userID = json_decode(json_encode(DB::select("select userID from users order by created_at desc limit 1;")), true)[0]["userID"];
+        if (in_array($fields["reg-role"], [1,2,3,4])) {
+            $salary = Salary::create([
+                'userID' => (int)$userID,
+                'salary' => ((5-((int)$fields['reg-role'])) * 1000000)
+            ]);
+        }
+        else if ($fields["reg-role"] == 5) {
             $info = PatientInfo::create([
                 'userID' => (int)$userID,
                 'familyCode' => $fields['reg-code'],
@@ -51,13 +58,15 @@ class FinalController extends Controller
             ]);
         }
 
-        $_SESSION["userID"] = $user->userID;
-        $_SESSION["name"] = $user->name;
-        $_SESSION["roleID"] = $user->roleID;
+
+        $_SESSION["userID"] = $userID;
+        $_SESSION["name"] = $fields['reg-name'];
+        $_SESSION["accessLevel"] = (int)$fields['reg-role'];
 
         return redirect('/land');
 
     }
+
 
     public function acceptDeclineUsers(Request $request){
 
@@ -72,6 +81,7 @@ class FinalController extends Controller
         }
         return redirect('/accountApproval');
     }
+
 
     public function login(Request $request) {
 
