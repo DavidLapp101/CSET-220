@@ -1,0 +1,50 @@
+html {
+    background-color: lightgoldenrodyellow;
+}
+
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 50px;
+    color: rgb(83, 111, 36);
+    text-align: center;
+    background-color: rgb(133, 197, 162);
+}
+
+input[type=date] {
+    padding: 5px;
+    background-color: rgb(167, 181, 176);
+    box-shadow: 3px 3px 5px grey;
+    font-size: 20px;
+    font-weight: 100;
+    width: 300px;
+}
+
+label{
+    font-size: 20px;
+    margin-top: 20px;
+    color: rgb(16, 116, 150);
+    font-size: 30px;
+    margin: 300px;
+    padding: 100px;
+    width: 100%;    
+}
+
+input[type=submit] {
+    padding:5px 5px; 
+   color: blue;
+    border:0 none;
+    border-radius: 5px; 
+    font-size: 20px;
+    width: 100px;
+    margin: 10px;
+}
+
+button{
+    color: blue;
+    padding:5px 5px; 
+    border:0 none;
+    border-radius: 5px; 
+    font-size: 20px;
+    width: 100px;
+    margin: 100px;
+}

@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post('/register', [FinalController::class, 'register']);
+Route::post('/login', [FinalController::class, 'login']);
 
 Route::post('/acceptDecline', [FinalController::class, 'acceptDeclineUsers']);
 

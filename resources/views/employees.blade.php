@@ -6,9 +6,10 @@
 @section('content')
     <h1>Employee</h1>
     <div>
-        <form action="">
-            <select name="employeeSearch" id="employeeSearch">
-                <option value="ID" selected>ID</option>
+        <form action="" class="search-form">
+            <select name="employeeSearch" class="search-filter" required>
+                <option selected disabled>Filter By</option>
+                <option value="ID">ID</option>
                 <option value="name">Name</option>
                 <option value="role">Role</option>
                 <option value="salary">Salary</option>
