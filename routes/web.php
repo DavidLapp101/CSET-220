@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\FinalController;
 use App\Http\Controllers\patientinfoController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,9 +38,7 @@ Route::get('/role', function () {
     return view('roles');
 });
 
-Route::get('/employees', function () {
-    return view('employees');
-});
+Route::get('/employees', [patientinfoController::class, 'listEmployees']);
 
 Route::get('/patientSearch', function () {
     return view('patient-search');

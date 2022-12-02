@@ -82,6 +82,29 @@ class FinalController extends Controller
         return redirect('/accountApproval');
     }
 
+    public function changeSalary(Request $request){
+        $employee = $request->input('employee');
+        $salary = $request->input('salary');
+        $list = json_decode(json_encode(DB::select('select userID from users where 
+        roleID between 1 and 4')), true);
+        echo $employee;
+        echo $salary;
+        print_r($list);
+        $arr = [];
+        for($i=0; $i<count($list); $i++){
+            array_push($arr, $list[$i]['userID']);
+        }
+        print_r($arr);
+        if(in_array($employee, $arr)){
+            Salary::where('userID', $employee)->update(['salary' => $salary]);
+            return redirect('/employees');
+        }
+        else{
+            echo "somethin";
+        }
+    }
+
+
 
     public function login(Request $request) {
 
@@ -111,6 +134,7 @@ class FinalController extends Controller
         return redirect('/land');
 
     }
+
 
 
 }
