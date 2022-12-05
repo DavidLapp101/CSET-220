@@ -15,7 +15,6 @@
             </tr>
             <tr>
                 <?php
-               
                     for($i=0; $i< count($pendingUsers); $i++){
                         echo '<tr>';
                         echo '<td>'. $pendingUsers[$i]['userID']. '</td>';

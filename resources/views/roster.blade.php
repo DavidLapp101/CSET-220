@@ -4,8 +4,6 @@
 
  
 @section('content')
-<!DOCTYPE html>
-<html>
     <h1>Roster</h1>
     <div>
         <input type="date">
@@ -27,4 +25,4 @@
             </tr>
         </table>
     </div>
-</html>
+@stop

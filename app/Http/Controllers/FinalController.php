@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PatientInfo;
 use App\Models\Role;
+use App\Models\Schedule;
 use App\Models\Salary;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -82,6 +83,29 @@ class FinalController extends Controller
         return redirect('/accountApproval');
     }
 
+    public function newRoster(Request $request){
+        $date = $request->input('date');
+        $supervisor = $request->input('supervisor');
+        $doc1 = $request->input('doctor1');
+        $doc2 = $request->input('doctor2');
+        $caregiver1 = $request->input('caregiver1');
+        $caregiver2 = $request->input('caregiver2');
+        $caregiver3 = $request->input('caregiver3');
+        $caregiver4 = $request->input('caregiver4');
+
+        Schedule::create([
+            'date' => $date,
+            'supervisor' => $supervisor,
+            'doctorOne' => $doc1,
+            'doctorTwo' => $doc2,
+            'groupOneCarer' => $caregiver1,
+            'groupTwoCarer' => $caregiver2,
+            'groupThreeCarer' => $caregiver3,
+            'groupFourCarer' => $caregiver4,
+        ]);
+        return redirect('/newRoster');
+    }
+
     public function changeSalary(Request $request){
         $employee = $request->input('employee');
         $salary = $request->input('salary');
@@ -100,8 +124,6 @@ class FinalController extends Controller
             echo "somethin";
         }
     }
-
-
 
     public function login(Request $request) {
 
