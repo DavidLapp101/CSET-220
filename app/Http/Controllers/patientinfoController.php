@@ -28,4 +28,11 @@ class patientinfoController extends Controller
         on(users.userID=salaries.userID) join roles on(users.roleID=roles.roleID) where users.roleID between 1 and 5;');
         return view('employees', ['employeeList' => json_decode(json_encode($employees), true)]);
     }
+
+
+    public function listPatients(){
+        $patients = DB::select('select users.userID, users.name, timestampdiff(year, users.dateOfBirth, curdate()) as age, patientinfo.emergencyContact,
+         patientinfo.contactName, patientinfo.admissionDate from users join patientinfo on(users.userID=patientinfo.userID);');
+         return view('patient-search', ['patientList' => json_decode(json_encode($patients), true)]);
+    }
 };

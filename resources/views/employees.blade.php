@@ -7,7 +7,7 @@
     <h1>Employee</h1>
     <div>
         <form action="" class="search-form">
-            <select name="employeeSearch" class="search-filter" required>
+            <select id="employeeSearch" name="employeeSearch" class="search-filter" required>
                 <option selected disabled>Filter By</option>
                 <option value="ID">ID</option>
                 <option value="name">Name</option>

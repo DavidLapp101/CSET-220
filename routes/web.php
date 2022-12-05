@@ -40,9 +40,7 @@ Route::get('/role', function () {
 
 Route::get('/employees', [patientinfoController::class, 'listEmployees']);
 
-Route::get('/patientSearch', function () {
-    return view('patient-search');
-});
+Route::get('/patientSearch', [patientinfoController::class, 'listPatients']);
 
 Route::get('/accountApproval',[patientinfoController::class, 'pendingUsers' ]);
 
