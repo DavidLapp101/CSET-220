@@ -1,6 +1,3 @@
-<?php
-session_start()
-?>
 @extends('header')
  
 @section('title', 'Page Title')
