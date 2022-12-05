@@ -25,3 +25,5 @@ Route::post('/login', [FinalController::class, 'login']);
 Route::post('/newRoster', [FinalController::class, 'newRoster']);
 
 Route::post('/acceptDecline', [FinalController::class, 'acceptDeclineUsers']);
+
+Route::post('/changeSalary', [FinalController::class, 'changeSalary']);

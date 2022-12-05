@@ -23,4 +23,9 @@ class patientinfoController extends Controller
         $caregiver = json_decode(json_encode(DB::select('select name, userID from users where roleID=4 AND accountStatus = "approved"')), true);
         return view('new-roster', compact('supervisor', 'doctor', 'caregiver'));
     }
-}
+    public function listEmployees(){
+        $employees = DB::select('select users.userID, users.name, roles.roleName, salaries.salary from users left join salaries 
+        on(users.userID=salaries.userID) join roles on(users.roleID=roles.roleID) where users.roleID between 1 and 5;');
+        return view('employees', ['employeeList' => json_decode(json_encode($employees), true)]);
+    }
+};
