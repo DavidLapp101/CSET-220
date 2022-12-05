@@ -48,9 +48,7 @@ Route::get('/accountApproval',[patientinfoController::class, 'pendingUsers' ]);
 
 // route::post('/acceptDecline', [FinalController::class, 'acceptDeclineUsers']);
 
-Route::get('/newRoster', function () {
-    return view('new-roster');
-});
+Route::get('/newRoster',[patientinfoController::class, 'createRoster']);
 
 Route::get('/patientOfDoctor', function () {
     return view('patient-of-doctor');
