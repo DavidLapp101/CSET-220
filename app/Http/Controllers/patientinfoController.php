@@ -46,4 +46,11 @@ class patientinfoController extends Controller
          patientinfo.contactName, patientinfo.admissionDate from users join patientinfo on(users.userID=patientinfo.userID);');
          return view('patient-search', ['patientList' => json_decode(json_encode($patients), true)]);
     }
+
+    function appointmentPaintent(){
+        $pat = json_decode(json_encode(DB::select('select userID, name from users where roleID=5')), true);
+        $doc1 = json_decode(json_encode(DB::select('select userID, name, date from users INNER JOIN schedules on(users.userID = schedules.doctorOne)')), true);
+        $doc2 = json_decode(json_encode(DB::select('select userID, name, date from users INNER JOIN schedules on(users.userID = schedules.doctorTwo)')), true);
+        return view('doctor-appointment', compact('pat', 'doc1', 'doc2'));
+    }
 };

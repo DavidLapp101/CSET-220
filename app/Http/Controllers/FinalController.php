@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\PatientInfo;
 use App\Models\Role;
 use App\Models\Schedule;
@@ -104,6 +105,19 @@ class FinalController extends Controller
             'groupFourCarer' => $caregiver4,
         ]);
         return redirect('/newRoster');
+    }
+
+    public function newDoctorsAppointment(Request $request){
+        $patientID=$request->input('patientID');
+        $doctorID=$request->input('doctorID');
+        $date=$request->input('date');
+
+        Appointment::create([
+            'patientID' => $patientID,
+            'doctorID' => $doctorID,
+            'date' => $date
+        ]);
+        return redirect('/newAppointment');
     }
 
     public function changeSalary(Request $request){
