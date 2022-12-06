@@ -21,7 +21,8 @@ class PatientInfo extends Model
         'contactRelation',
         'dateOfBirth',
         'admissionDate',
-        'balance'
+        'balance',
+        'lastBalanceUpdate'
     ];
 
 }
