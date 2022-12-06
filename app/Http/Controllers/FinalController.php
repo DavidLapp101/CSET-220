@@ -154,7 +154,44 @@ class FinalController extends Controller
 
     }
 
+    public function updateBalance(Request $request){
+        $patients = PatientInfo::all();
+        for($i=0; $i<count($patients); $i++){
+            $balance = 0;
+            $datediff = DB::select('select timestampdiff(day, lastBalanceUpdate, curdate()) as "days" from patientinfo where userID='.$patients[$i]->userID)[0];
+            $balance += 10*json_decode(json_encode($datediff), true)["days"];
 
+            $appointments = DB::select('select count(appointmentID) as "count" from appointments where patientID = '.$patients[$i]->userID.' and date BETWEEN(select lastBalanceUpdate
+             from patientinfo where userID='.$patients[$i]->userID.')and curdate()')[0];
+            $appointments = json_decode(json_encode($appointments), true)["count"];
+            $balance += 50*$appointments;
+
+            if(json_decode(json_encode(DB::select('select DAY(curdate()) as day')), true)[0]['day'] == 6){
+                $medications = DB::select("select count(morningMed) as ma, count(afternoonMed) as aa, count(eveningMed) as ea from regiments join patientinfo on(patientinfo.userID=regiments.patientID) where patientID = ".$patients[$i]->userID." and
+                timestampdiff(month, date, curdate()) >=1 and date=greatest(lastBalanceUpdate, date) and date != lastBalanceUpdate");
+                $medications = json_decode(json_encode($medications), true);
+                for($j=0; $j<count($medications); $j++){
+                    $balance += 5* $medications[$j]['ma'];
+                    $balance += 5* $medications[$j]['aa'];
+                    $balance += 5* $medications[$j]['ea'];
+                }
+            
+            }
+            PatientInfo::where('userID', $patients[$i]->userID)->update(['balance' => $balance], ['lastBalanceUpdate' => date('Y-m-d')]);
+        }
+        
+    }
+
+    public function makePayment(Request $request){
+        $patient = $request->input('searchBalance');
+        $balance = DB::select('select balance from patientinfo where userID='.$patient);
+        $balance = json_decode(json_encode($balance), true)[0]["balance"];
+        $paymentAmount = $request->input('paymentAmount');
+        $balance -= $paymentAmount;
+        PatientInfo::where('userID', $patient)->update(['balance'=>$balance]);
+        $_POST['success'] = 'User '.$patient. " payment succesful";
+        return redirect('/payments');
+    }
 
 }
 
