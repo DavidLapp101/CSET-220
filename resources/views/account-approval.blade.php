@@ -5,7 +5,7 @@
  
 @section('content')
     <h1>Registration Approval</h1>
-
+    <link rel="stylesheet" href="{{ asset('css/accountApproval.css') }}"> 
     <div>
         <table>
             <tr>

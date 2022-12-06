@@ -1,3 +1,10 @@
+*, *:before, *:after
+{box-sizing:border-box;
+padding:5; 
+margin:0;
+color: rgb(29, 6, 6);
+}
+
 *, *:before, *:after {box-sizing: border-box; padding: 0; margin: 0;}
 
 
@@ -90,6 +97,8 @@
     margin: 5px auto;
 }
 #account-body {
-    /* put background image here */
+    background-image: url("./oldpeople.jpeg");
+    background-position: top left;
+    background-size: cover;
 }
 
