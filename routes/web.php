@@ -33,9 +33,7 @@ Route::get('/land', function () {
     return view('landing-page');
 });
 
-Route::get('/newAppointment', function () {
-    return view('doctor-appointment');
-});
+Route::get('/newAppointment', [patientinfoController::class, 'appointmentPaintent']);
 
 Route::get('/role', function () {
     return view('roles');

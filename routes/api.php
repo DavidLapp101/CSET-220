@@ -23,11 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/register', [FinalController::class, 'register']);
 Route::post('/login', [FinalController::class, 'login']);
 Route::post('/newRoster', [FinalController::class, 'newRoster']);
-
+Route::post('/newAppointment', [FinalController::class, 'newDoctorsAppointment']);
 Route::post('/acceptDecline', [FinalController::class, 'acceptDeclineUsers']);
-
 Route::post('/changeSalary', [FinalController::class, 'changeSalary']);
-
+Route::post('/changeSalary', [FinalController::class, 'changeSalary']);
 Route::post('/updateBalance', [FinalController::class, 'updateBalance']);
-
 Route::post('/makePayment', [FinalController::class, 'makePayment']);
