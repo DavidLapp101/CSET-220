@@ -5,6 +5,9 @@ margin:0;
 color: rgb(29, 6, 6);
 }
 
+*, *:before, *:after {box-sizing: border-box; padding: 0; margin: 0;}
+
+
 .landing-page-header{
     height: 75px;
     width: 100%;
@@ -21,3 +24,34 @@ color: rgb(29, 6, 6);
     color: whitesmoke;
 }
 
+.search-form{
+    margin-right:10;
+}
+.search-filter{
+    float: left;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 5px 0px 0px 5px;
+    height: 30px;
+}
+.search-input{
+    border: none;
+    float: left;
+    height: 30px;
+    width: 400px;
+    padding-left: 15px;
+    border-bottom:1px solid gray;
+    border-top: 1px solid gray;
+    box-shadow: 0 0 2px lightgrey inset;
+}
+.search-input:focus{
+    outline: none !important;
+    box-shadow: 0 0 5px #719ECE;
+}
+.search-submit{
+    border: none;
+    height: 30px;
+    border: 1px solid gray;
+    border-radius: 0px 5px 5px 0px;
+    width:30px
+}

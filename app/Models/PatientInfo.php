@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class PatientInfo extends Model
 {
     use HasFactory;
+
+    protected $table = "patientinfo";
+
+    protected $fillable = [
+        'userID',
+        'familyCode',
+        'emergencyContact',
+        'contactName',
+        'contactRelation',
+        'dateOfBirth',
+        'admissionDate',
+        'balance'
+    ];
 }
