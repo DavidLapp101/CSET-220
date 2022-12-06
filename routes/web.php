@@ -40,9 +40,7 @@ Route::get('/role', function () {
 
 Route::get('/employees', [patientinfoController::class, 'listEmployees']);
 
-Route::get('/patientSearch', function () {
-    return view('patient-search');
-});
+Route::get('/patientSearch', [patientinfoController::class, 'listPatients']);
 
 Route::get('/accountApproval',[patientinfoController::class, 'pendingUsers' ]);
 
@@ -62,6 +60,4 @@ Route::get('/payments', function () {
     return view('payments');
 });
 
-Route::get('/roster', function () {
-    return view('roster');
-});
+Route::get('/roster', [patientinfoController::class, 'showRoster']);
