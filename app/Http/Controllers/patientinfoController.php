@@ -28,6 +28,17 @@ class patientinfoController extends Controller
         on(users.userID=salaries.userID) join roles on(users.roleID=roles.roleID) where users.roleID between 1 and 5;');
         return view('employees', ['employeeList' => json_decode(json_encode($employees), true)]);
     }
+    
+    function showRoster(){
+        $supervisor = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.supervisor)')), true);
+        $doc1 = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.doctorOne)')), true);
+        $doc2 = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.doctorTwo)')), true);
+        $care1 = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.groupOneCarer)')), true);
+        $care2 = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.groupTwoCarer)')), true);
+        $care3 = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.groupThreeCarer)')), true);
+        $care4 = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.groupFourCarer)')), true);
+        return view('roster', compact('supervisor', 'doc1', 'doc2', 'care1', 'care2', 'care3', 'care4'));
+     }
 
 
     public function listPatients(){

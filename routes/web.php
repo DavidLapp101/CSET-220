@@ -60,6 +60,4 @@ Route::get('/payments', function () {
     return view('payments');
 });
 
-Route::get('/roster', function () {
-    return view('roster');
-});
+Route::get('/roster', [patientinfoController::class, 'showRoster']);
