@@ -52,13 +52,7 @@ Route::get('/patientOfDoctor', function () {
     return view('patient-of-doctor');
 });
 
-Route::get('/adminReport', function () {
-    return view('admin-report');
-});
-
-Route::get('/payments', function () {
-    return view('payments');
-});
+Route::get('/payments',[patientinfoController::class, 'patientBalances']);
 
 Route::get('/roster', function () {
     return view('roster');

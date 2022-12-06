@@ -27,3 +27,7 @@ Route::post('/newRoster', [FinalController::class, 'newRoster']);
 Route::post('/acceptDecline', [FinalController::class, 'acceptDeclineUsers']);
 
 Route::post('/changeSalary', [FinalController::class, 'changeSalary']);
+
+Route::post('/updateBalance', [FinalController::class, 'updateBalance']);
+
+Route::post('/makePayment', [FinalController::class, 'makePayment']);

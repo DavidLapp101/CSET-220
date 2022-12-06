@@ -35,4 +35,9 @@ class patientinfoController extends Controller
          patientinfo.contactName, patientinfo.admissionDate from users join patientinfo on(users.userID=patientinfo.userID);');
          return view('patient-search', ['patientList' => json_decode(json_encode($patients), true)]);
     }
+
+    public function patientBalances(){
+        $balances = DB::select('select userID, balance from patientInfo');
+        return view('payments', ['balances' => json_decode(json_encode($balances), true)]);
+    }
 };
