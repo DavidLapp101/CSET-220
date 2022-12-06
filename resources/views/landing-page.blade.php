@@ -4,6 +4,7 @@
 
  
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/land.css') }}">
     {{-- ADMIN HOME PAGE --}}
     <div class="land_level1" id="land_level1" style="display: none">
         <p>Admin</p>
@@ -159,8 +160,6 @@
             </tr>
         </table>
     </div>
-
-
 
 
     <script>

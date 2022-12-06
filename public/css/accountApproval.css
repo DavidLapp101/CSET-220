@@ -1,0 +1,33 @@
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 50px;
+    color: rgb(83, 111, 36);
+    text-align: center;
+    background-color: rgb(131, 246, 183);
+}
+
+html {
+    background-color: rgb(248, 248, 244);
+}
+
+th {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 15px;
+}
+
+input[type=number] {
+    margin: 10px;
+}
+
+.container{
+    margin: 50px;
+}
+
+.container {
+    background-color: rgb(17, 95, 114);
+    margin: 50px;
+    padding: 80px;
+    float: center;
+}
+
+

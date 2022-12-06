@@ -1,3 +1,9 @@
+@extends('header')
+ 
+@section('title', 'Page Title')
+
+ 
+@section('content')
 <!DOCTYPE html>
 <html>
     <link rel="stylesheet" href="{{ asset('css/newRoster.css') }}"> 
@@ -39,3 +45,4 @@
         <button>Cancel</button>
     </form>
 </html>
+@stop
