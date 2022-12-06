@@ -1,4 +1,5 @@
 <?php session_start() ?>
+<html>
 <head>
     <title>App Name - @yield('title')</title>
     <link rel="stylesheet" href="/style.css">
@@ -25,7 +26,7 @@
                     <option value="/employees" style="display: none;" id="mh-employee">Employee</option>
                     <option value="/patientSearch" style="display: none;" id="mh-patients">Patients</option>
                     <option value="/accountApproval" style="display: none;" id="mh-registration-approval">Registration Approval</option>
-                    <option value="#" id="mh-roster">Roster</option>
+                    <option value="/roster" id="mh-roster">Roster</option>
                     <option value="/newRoster" style="display: none;" id="mh-new-roster">New Roster</option>
                     <option value="/adminReport" style="display: none;" id="mh-admin-report">Admins Report</option>
                     <option value="/payments" style="display: none;" id="mh-payment">Payment</option>

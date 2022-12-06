@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\FinalController;
+use App\Http\Controllers\patientinfoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,21 +41,15 @@ Route::get('/role', function () {
     return view('roles');
 });
 
-Route::get('/employees', function () {
-    return view('employees');
-});
+Route::get('/employees', [patientinfoController::class, 'listEmployees']);
 
-Route::get('/patientSearch', function () {
-    return view('patient-search');
-});
+Route::get('/patientSearch', [patientinfoController::class, 'listPatients']);
 
-Route::get('/accountApproval', function () {
-    return view('account-approval');
-});
+Route::get('/accountApproval',[patientinfoController::class, 'pendingUsers' ]);
 
-Route::get('/newRoster', function () {
-    return view('new-roster');
-});
+// route::post('/acceptDecline', [FinalController::class, 'acceptDeclineUsers']);
+
+Route::get('/newRoster',[patientinfoController::class, 'createRoster']);
 
 Route::get('/patientOfDoctor', function () {
     return view('patient-of-doctor');
@@ -68,6 +63,4 @@ Route::get('/payments', function () {
     return view('payments');
 });
 
-Route::get('/roster', function () {
-    return view('roster');
-});
+Route::get('/roster', [patientinfoController::class, 'showRoster']);
