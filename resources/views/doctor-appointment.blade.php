@@ -4,6 +4,7 @@
 
  
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/doctor.css') }}">
 <div>
 <h1>Doctor's Appointment:</h1>
 </div>

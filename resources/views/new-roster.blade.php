@@ -2,9 +2,8 @@
  
 @section('title', 'Page Title')
 
-
 @section('content')
-    {{-- <link rel="stylesheet" href="{{ asset('css/newRoster.css') }}">  --}}
+    <link rel="stylesheet" href="{{ asset('css/newRoster.css') }}"> 
     <h1>New Roster</h1>
     <form action="/api/newRoster" method="POST" id="new-roster-form">
         <input type="date" name="date" required>
@@ -82,6 +81,7 @@
         <input type="submit" value="OK">
         <button onclick="clearForm()">Cancel</button>
     </form>
+
     <script>
         $(".new-roster-select").each(function () {
             $(this).on('input', function () {
