@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Ramsey\Uuid\Type\Decimal;
 
 return new class extends Migration
 {
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->integer("groupNum");
             $table->date("admissionDate");
             $table->decimal("balance", 11, 2);
+            $table->date("lastBalanceUpdate");
             $table->timestamps();
 
             $table->foreign("userID")->references("userID")->on("users");

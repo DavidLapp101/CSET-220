@@ -90,6 +90,8 @@
     margin: 5px auto;
 }
 #account-body {
-    /* put background image here */
+    background-image: url("./oldpeople.jpeg");
+    background-position: top left;
+    background-size: cover;
 }
 

@@ -75,7 +75,6 @@ class FinalController extends Controller
         $action = $request->input('approve/decline');
         if($action == 'accept'){
             User::where('userID', $user)->update(['accountStatus' => "approved"]);
-            
         }
         else{
             User::where('userID', $user)->update(['accountStatus' => "declined"]);
