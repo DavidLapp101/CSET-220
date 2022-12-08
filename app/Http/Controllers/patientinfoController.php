@@ -60,6 +60,28 @@ class patientinfoController extends Controller
 
     }
 
+    public function land(){
+        $dailyTask = DB::select('select doctorID, dailyTasks.patientID, dailytasks.date, dailytasks.docApt, dailytasks.morningMed, dailytasks.afternoonMed, dailytasks.eveningMed, dailytasks.breakfast, dailytasks.lunch, dailytasks.dinner, patientinfo.groupNum, 
+        case 
+        WHEN patientinfo.groupNum = 1 THEN (select name FROM users INNER JOIN schedules ON (users.userID = schedules.groupOneCarer) WHERE schedules.date = curdate()) 
+        WHEN patientinfo.groupNum = 2 THEN (select name FROM users INNER JOIN schedules ON (users.userID = schedules.groupTwoCarer) WHERE schedules.date = curdate()) 
+        WHEN patientinfo.groupNum = 3 THEN (select name FROM users INNER JOIN schedules ON (users.userID = schedules.groupThreeCarer) WHERE schedules.date = curdate()) 
+        WHEN patientinfo.groupNum = 4 THEN (select name FROM users INNER JOIN schedules ON (users.userID = schedules.groupFourCarer) WHERE schedules.date = curdate()) 
+        END AS caretakerID,
+        CASE
+        WHEN doctorID IS NOT NULL THEN (select name FROM users WHERE users.userID=doctorID)
+        END AS doctorName,
+        CASE
+        WHEN dailytasks.patientID IS NOT NULL THEN (select name FROM users WHERE users.userID=dailytasks.patientID)
+        END AS patientName
+        from
+        dailytasks INNER JOIN patientinfo on(patientinfo.userID = dailytasks.patientID) INNER JOIN
+        schedules on(dailytasks.date = schedules.date) LEFT JOIN
+        appointments on (appointments.date = dailytasks.date and appointments.patientID = dailytasks.patientID);');
+
+        return view('landing-page', ['reg' => json_decode(json_encode($dailyTask), true)]);
+    }
+    
     public function adminReport(){
         $dailyTask = DB::select('select doctorID, dailyTasks.patientID, dailytasks.date, dailytasks.docApt, dailytasks.morningMed, dailytasks.afternoonMed, dailytasks.eveningMed, dailytasks.breakfast, dailytasks.lunch, dailytasks.dinner, patientinfo.groupNum, 
         case 

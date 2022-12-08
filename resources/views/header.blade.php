@@ -1,3 +1,8 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <html>
 <head>
     <title>App Name - @yield('title')</title>
@@ -9,6 +14,7 @@
 <body>
 
     <p id="test-user-name"><?php echo($_SESSION["name"]); ?></p>
+    <p id="test-userID"><?php echo($_SESSION["userID"]); ?></p>
     <p id="test-user-level"><?php echo($_SESSION["accessLevel"]); ?></p>
 
     <div class="master-header">

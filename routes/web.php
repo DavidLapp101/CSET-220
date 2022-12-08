@@ -29,9 +29,7 @@ Route::get('/patientInfo', function(){
     return view('patientinfo');
 });
 
-Route::get('/land', function () {
-    return view('landing-page');
-});
+Route::get('/land', [patientinfoController::class, 'land']);
 
 Route::get('/newAppointment', [patientinfoController::class, 'appointmentPaintent']);
 
