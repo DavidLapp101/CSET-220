@@ -25,9 +25,9 @@
             <tr>
                 <th>Patient ID</th>
                 <th>Name</th>
-                <th>age</th>
-                <th>Emergency Contact</th>
+                <th>Age</th>
                 <th>Emergency Contact Phone Number</th>
+                <th>Emergency Contact</th>
                 <th>Admission Date</th>
             </tr>
             <?php
@@ -53,7 +53,7 @@
             function searchPatient(value) {
                 $(".patientSearchList-" + $("#patientSearch").val()).each(function() {
                     if ($(this).text().includes(value)) {
-                        $(this).parent().css("display", "block");
+                        $(this).parent().css("display", "table-row");
                     }
                     else {
                         $(this).parent().css("display", "none");

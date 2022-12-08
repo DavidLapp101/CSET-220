@@ -52,7 +52,7 @@
         function searchEmp(value) {
             $(".changeSalaryEmployee-" + $("#employeeSearch").val()).each(function() {
                 if ($(this).text().includes(value)) {
-                    $(this).parent().css("display", "block");
+                    $(this).parent().css("display", "table-row");
                 }
                 else {
                     $(this).parent().css("display", "none");
