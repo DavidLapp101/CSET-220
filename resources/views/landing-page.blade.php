@@ -1,8 +1,8 @@
+<?php session_start() ?>
 @extends('header')
  
 @section('title', 'Page Title')
 
- 
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/land.css') }}">
 
@@ -91,16 +91,32 @@
 
     {{-- PATIENT HOME PAGE --}}
     <div class="land_level5" id="land_level5" style="display: none">
-        <p>Patient</p>
         <div class="landing-page-patient-home">
-            <p>Patient ID: #############</p>
-            <p>Date: #############</p>
-            <p>Patient Name: #############</p>
+            <form action="/land" method="GET">
+                <input type="date" name = "date" id="date">
+                <input type="submit">
+            </form>
+            <?php
+                if(isset($_GET['date'])){
+                    $date=$_GET['date'];
+                }
+                else{
+                    $date = date("Y-m-d");
+                }
+                $id = $_SESSION["userID"];
+                for($i=0; $i<count($reg); $i++){
+                    if(($reg[$i]['patientID']==$id) && $reg[$i]['date']==$date){
+                        echo '<p>Patient ID: '.$id.'</p>';
+                        echo '<p>Date:'.$date.'</p>';
+                        echo '<p>Patient Name: '.$reg[$i]['patientName'].'</p>';
+                    }
+                }
+            ?>
             <table>
                 <tr>
-                    <th>Doctor's Name</th>
-                    <th>Doctors Appointment</th>
-                    <th>Caregiver's Name</th>
+                    <th>Doctor Name</th>
+                    <th>Completed Appointment</th>
+                    <th>Caregivers Name</th>
                     <th>Morning Medicine</th>
                     <th>Afternoon Medicine</th>
                     <th>Night Medicine</th>
@@ -109,15 +125,69 @@
                     <th>Dinner</th>
                 </tr>
                 <tr>
-                    <td>######</td>
-                    <td>######</td>
-                    <td>######</td>
-                    <td>######</td>
-                    <td>######</td>
-                    <td>######</td>
-                    <td>######</td>
-                    <td>######</td>
-                    <td>######</td>
+                    <?php
+                        if(isset($_GET['date'])){
+                            $date=$_GET['date'];
+                        }
+                        else{
+                            $date = date("Y-m-d");
+                        }
+                        $id = $_SESSION["userID"];
+                        for($i=0; $i<count($reg); $i++){
+                            if(($reg[$i]['patientID']==$id) && $reg[$i]['date']==$date){
+                                if(is_null($reg[$i]['doctorName'])==false){
+                                    echo"<td>".$reg[$i]['doctorName']."</td>";
+                                }
+                                else if(is_null($reg[$i]['doctorName'])){
+                                    echo"<td>NO DOCTOR</td>";
+                                }
+                                if($reg[$i]['docApt']==1){
+                                    echo'<td><input type="checkbox" checked disabled></td>';
+                                }
+                                else if($reg[$i]['docApt']==0){
+                                    echo'<td><input type="checkbox" disabled></td>';
+                                }
+                                else{
+                                    echo '-';
+                                }
+                                echo '<td>'.$reg[$i]['caretakerID'].'</td>';
+                                if($reg[$i]['morningMed']==1){
+                                    echo'<td><input type="checkbox" checked disabled></td>';
+                                }
+                                else if($reg[$i]['morningMed']==0){
+                                    echo'<td><input type="checkbox" disabled></td>';
+                                }
+                                if($reg[$i]['afternoonMed']==1){
+                                    echo'<td><input type="checkbox" checked disabled></td>';
+                                }
+                                else if($reg[$i]['afternoonMed']==0){
+                                    echo'<td><input type="checkbox" disabled></td>';
+                                }
+                                if($reg[$i]['eveningMed']==1){
+                                    echo'<td><input type="checkbox" checked disabled></td>';
+                                }
+                                else if($reg[$i]['eveningMed']==0){
+                                    echo'<td><input type="checkbox" disabled></td>';
+                                }
+                                if($reg[$i]['breakfast']==1){
+                                    echo'<td><input type="checkbox" checked disabled></td>';
+                                }
+                                else if($reg[$i]['breakfast']==0){
+                                    echo'<td><input type="checkbox" disabled></td>';
+                                }if($reg[$i]['lunch']==1){
+                                    echo'<td><input type="checkbox" checked disabled></td>';
+                                }
+                                else if($reg[$i]['lunch']==0){
+                                    echo'<td><input type="checkbox" disabled></td>';
+                                }if($reg[$i]['dinner']==1){
+                                    echo'<td><input type="checkbox" checked disabled></td>';
+                                }
+                                else if($reg[$i]['dinner']==0){
+                                    echo'<td><input type="checkbox" disabled></td>';
+                                }
+                            }
+                        }  
+                    ?>
                 </tr>
             </table>
         </div>
