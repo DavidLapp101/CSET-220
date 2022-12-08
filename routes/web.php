@@ -54,3 +54,5 @@ Route::get('/patientOfDoctor', function () {
 Route::get('/payments',[patientinfoController::class, 'patientBalances']);
 
 Route::get('/roster', [patientinfoController::class, 'showRoster']);
+
+Route::get('/adminReport', [patientinfoController::class, 'adminReport']);

@@ -65,9 +65,16 @@ class FinalController extends Controller
         $_SESSION["name"] = $fields['reg-name'];
         $_SESSION["accessLevel"] = (int)$fields['reg-role'];
 
-        return redirect('/land');
+        return redirect('/');
 
     }
+
+    // public function accountPage() {
+
+    //     $roles = json_decode(json_encode(Role::all()), true);
+    //     return view("login-register", ['roles' => $roles]);
+
+    // }
 
 
     public function acceptDeclineUsers(Request $request){

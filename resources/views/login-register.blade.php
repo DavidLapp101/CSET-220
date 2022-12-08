@@ -47,19 +47,19 @@
 <body id="account-body">
     <div id="account-container">
         <button id="account-form-btn" onclick="toggle()">Register</button>
-        <?php
-            if (isset($_POST["login-info"])) {
-                if ($_POST["login-info"] == "incorrect") {
-                    echo ("<p style='color: red;'>Incorrect Information</p>");
-                }
-                else if ($_POST["login-info"] == "pending") {
-                    echo ("<p style='color: red;'>Your account has not been approved</p>");
-                }
-            }
-        ?>
         <div id="login-div" class="account-div">
             <form id="login-form" class="account-form" action="/api/login" method="post">
                 <h3>Login</h3>
+                <?php
+                    if (isset($_POST["login-info"])) {
+                        if ($_POST["login-info"] == "incorrect") {
+                            echo ("<p style='color: red;'>Incorrect Information</p>");
+                        }
+                        else if ($_POST["login-info"] == "pending") {
+                            echo ("<p style='color: red;'>Your account has not been approved</p>");
+                        }
+                    }
+                ?>
                 <input type="text" name="login-email" id="login-email" placeholder="Email">
                 <input type="text" name="login-pass" id="login-pass" placeholder="Password">
                 <input type="submit" name="Submit">
@@ -72,12 +72,13 @@
                 <div id="register-inputs-div">
                     <select name="reg-role" id="reg-role" onchange="checkPatient(this.value)" required>
                         <option value="" disabled selected>Role:</option>
-                        <option value=1>Admin</option>
-                        <option value=2>Supervisor</option>
-                        <option value=3>Doctor</option>
-                        <option value=4>Caregiver</option>
-                        <option value=5>Patient</option>
-                        <option value=6>Family Member</option>
+                        <?php
+                        use App\Models\Role;
+                        $roles = json_decode(json_encode(Role::all()), true);
+                            for ($i=0; $i<count($roles); $i++) {
+                                echo "<option value='".$roles[$i]["roleID"]."'>".$roles[$i]["roleName"]."</option>";
+                            }
+                        ?>
                     </select>
                     <input type="text" name="reg-name" id="reg-name" placeholder="Full Name" required>
                     <input type="text" name="reg-email" id="reg-email" placeholder="Email" required>
