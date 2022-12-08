@@ -1,13 +1,18 @@
+<?php
+    session_start(); 
+    use App\Models\User;
+?>
 @extends('header')
  
 @section('title', 'Page Title')
 
  
 @section('content')
-    <h1>Patient of Doctor</h1>
-    <div>
-        <h2>Patient name here:</h2>
-    </div>
+    <?php
+        $user = User::where("userID", $_GET["patient"])->first();
+        echo "<h1>Patient of Doctor</h1><div><h2>Patient name here:".$user->name."</h2></div>"
+    ?>
+    
     <div>
         <table>
             <tr>

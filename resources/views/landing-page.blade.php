@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 @extends('header')
  
 @section('title', 'Page Title')
@@ -25,14 +26,6 @@
     {{-- DOCTOR HOME PAGE --}}
     <div class="land_level3" id="land_level3" style="display: none">
         <p>Doctor</p>
-        <form class="doctor-choose-page">
-            <select name="Page" onchange="location = this.value;">
-                <option value="/land">Home</option>
-                <option value="#">Patients</option>
-                <option value="#">Roster</option>
-                <option value="/">Logout</option>
-            </select>
-        </form> 
         <table>
             <tr>
                 <th>Name</th>
@@ -43,16 +36,45 @@
                 <th>Night Med</th>
                 <th></th>
             </tr>
-            <tr>
-                <td>######</td>
-                <td>######</td>
-                <td>######</td>
-                <td>######</td>
-                <td>######</td>
-                <td>######</td>
-                <td><a href="#">Edit</a></td>
-            </tr>
+                
+            <?php
+                $appointmentInfo = DB::select("select userID, name, appointments.date as 'date', comment, morningMed, afternoonMed, eveningMed from appointments left join regiments on (appointments.date=regiments.date and appointments.doctorID=regiments.doctorID) join users on (appointments.patientID = users.userID) where appointments.date != GREATEST(appointments.date, curdate()) and appointments.doctorID = 6 order by appointments.date");
+                $appointmentInfo = json_decode(json_encode($appointmentInfo), true);
+
+                $columns = ["name", "date", "comment", "morningMed", "afternoonMed", "eveningMed"];
+                for ($i = 0; $i<count($appointmentInfo); $i++) {
+                    echo "<tr>";
+                    echo "<td><a href='/patientOfDoctor/?patient=".$appointmentInfo[$i]["userID"]."'>View Patient</a></td>";
+                    for ($j = 0; $j<count($columns); $j++) {
+                        echo "<td>".$appointmentInfo[$i][$columns[$j]]."</td>";
+                    }
+                    echo "</tr>";
+                }
+            ?>
         </table>
+
+        <br><br>
+        
+        <h4>Appointments</h4>
+        <input type="date" id="til-date" name="til-date" placeholder="Date" onchange="searchAppointments(this.value)">
+
+        <table>
+            <tr>
+                <th>Patient</th>
+                <th>Date</th>
+            </tr>
+            <?php
+                $upcomingApps = DB::select("select userID, name, date from appointments join users on (users.userid = appointments.patientID) where doctorID = ".$_SESSION["userID"]." and date >= curdate() order by date");
+                for ($i = 0; $i<count($upcomingApps); $i++) {
+                    echo "<tr class='upcomingApp'>";
+                    echo "<td><a href='/patientOfDoctor/?patient=".$upcomingApps[$i]->userID."'>View Patient</a></td>";
+                    echo "<td>".$upcomingApps[$i]->name."</td>";
+                    echo "<td>".$upcomingApps[$i]->date."</td>";
+                    echo "</tr>";
+                }
+            ?>
+        </table>
+
     </div>
 
 
@@ -190,6 +212,19 @@
         else if(accessLevel==6){
             const access6 = document.getElementById('land_level6');
             access6.style.display = 'block';
+        }
+
+        function searchAppointments(date) {
+            let tillDate = new Date(date);
+            $(".upcomingApp").each(function () {
+                let appDate = new Date(this.children[2].innerHTML);
+                if (tillDate.getTime() > appDate.getTime()) {
+                    $(this).css("display", "none");
+                }
+                else {
+                    $(this).css("display", "table-row");
+                }
+            });
         }
 
     </script>
