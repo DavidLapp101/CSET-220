@@ -105,9 +105,9 @@ if (session_status() === PHP_SESSION_NONE) {
                     <td><input type="checkbox" id="breakfast"></td>
                     <td><input type="checkbox" id="lunch"></td>
                     <td><input type="checkbox" id="dinner"></td>
+                    <td><input type="submit" value="Submit"></td>
                 </tr>
             </table>
-            <input type="submit" value="Submit"> 
         </form>
     </div>
 

@@ -228,7 +228,8 @@ class FinalController extends Controller
     }
 
     public function land(){
-        $dailyTask = DB::select('select doctorID, dailyTasks.patientID, dailytasks.date, dailytasks.docApt, dailytasks.morningMed, dailytasks.afternoonMed, dailytasks.eveningMed, dailytasks.breakfast, dailytasks.lunch, dailytasks.dinner, patientinfo.groupNum, 
+        //for patient Home Page
+        $reg = json_decode(json_encode(DB::select('select doctorID, dailyTasks.patientID, dailytasks.date, dailytasks.docApt, dailytasks.morningMed, dailytasks.afternoonMed, dailytasks.eveningMed, dailytasks.breakfast, dailytasks.lunch, dailytasks.dinner, patientinfo.groupNum, 
         case 
         WHEN patientinfo.groupNum = 1 THEN (select name FROM users INNER JOIN schedules ON (users.userID = schedules.groupOneCarer) WHERE schedules.date = curdate()) 
         WHEN patientinfo.groupNum = 2 THEN (select name FROM users INNER JOIN schedules ON (users.userID = schedules.groupTwoCarer) WHERE schedules.date = curdate()) 
@@ -244,9 +245,11 @@ class FinalController extends Controller
         from
         dailytasks INNER JOIN patientinfo on(patientinfo.userID = dailytasks.patientID) INNER JOIN
         schedules on(dailytasks.date = schedules.date) LEFT JOIN
-        appointments on (appointments.date = dailytasks.date and appointments.patientID = dailytasks.patientID);');
-        $takeMeds = DB::select('select patientID, date, morningMed, afternoonMed, eveningMed from regiments where patientID='.$_SESSION["userID"].' order by date desc LIMIT 1;');
-        return view('landing-page', ['reg' => json_decode(json_encode($dailyTask), true)], ['takeMeds' => json_decode(json_encode($takeMeds), true)]);
+        appointments on (appointments.date = dailytasks.date and appointments.patientID = dailytasks.patientID);')), true);
+        $takeMeds = json_decode(json_encode(DB::select('select patientID, date, morningMed, afternoonMed, eveningMed from regiments where patientID='.$_SESSION["userID"].' order by date desc LIMIT 1;')), true);
+
+        //for cargiver Home Page
+        return view('landing-page', compact('reg', 'takeMeds'));
     }
 
 }
