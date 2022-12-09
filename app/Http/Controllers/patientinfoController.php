@@ -30,13 +30,13 @@ class patientinfoController extends Controller
     }
     
     function showRoster(){
-        $supervisor = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.supervisor)')), true);
-        $doc1 = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.doctorOne)')), true);
-        $doc2 = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.doctorTwo)')), true);
-        $care1 = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.groupOneCarer)')), true);
-        $care2 = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.groupTwoCarer)')), true);
-        $care3 = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.groupThreeCarer)')), true);
-        $care4 = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.groupFourCarer)')), true);
+        $supervisor = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.supervisor) ORDER by date')), true);
+        $doc1 = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.doctorOne) ORDER by date')), true);
+        $doc2 = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.doctorTwo) ORDER by date')), true);
+        $care1 = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.groupOneCarer) ORDER by date')), true);
+        $care2 = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.groupTwoCarer) ORDER by date')), true);
+        $care3 = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.groupThreeCarer) ORDER by date')), true);
+        $care4 = json_decode(json_encode(DB::select('select date, name FROM users INNER JOIN schedules on(users.userID = schedules.groupFourCarer) ORDER by date')), true);
         return view('roster', compact('supervisor', 'doc1', 'doc2', 'care1', 'care2', 'care3', 'care4'));
      }
 
