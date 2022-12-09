@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\DailyTask;
 use App\Models\PatientInfo;
 use App\Models\Role;
 use App\Models\Schedule;
@@ -109,8 +110,18 @@ class FinalController extends Controller
             'groupOneCarer' => $caregiver1,
             'groupTwoCarer' => $caregiver2,
             'groupThreeCarer' => $caregiver3,
-            'groupFourCarer' => $caregiver4,
+            'groupFourCarer' => $caregiver4
         ]);
+
+
+        $patients = json_decode(json_encode(DB::select('select userID from users where roleID = 5;')), true);
+        for($i=0; $i < count($patients); $i++){
+            DailyTask::create([
+                'date' => $date,
+                'patientID' => $patients[$i]['userID']
+            ]);
+        }
+
         return redirect('/newRoster');
     }
 

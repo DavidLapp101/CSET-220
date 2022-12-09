@@ -54,6 +54,7 @@ class patientinfoController extends Controller
         $doc2 = json_decode(json_encode(DB::select('select userID, name, date from users INNER JOIN schedules on(users.userID = schedules.doctorTwo)')), true);
         return view('doctor-appointment', compact('pat', 'doc1', 'doc2'));
     }
+
     public function patientBalances(){
         $balances = DB::select('select userID, balance from patientInfo');
         return view('payments', ['balances' => json_decode(json_encode($balances), true)]);
@@ -100,6 +101,12 @@ class patientinfoController extends Controller
         dailytasks INNER JOIN patientinfo on(patientinfo.userID = dailytasks.patientID) INNER JOIN
         schedules on(dailytasks.date = schedules.date) LEFT JOIN
         appointments on (appointments.date = dailytasks.date and appointments.patientID = dailytasks.patientID);');
-        return view('admin-report', ['dailyTask' => json_decode(json_encode($dailyTask), true)]);
+
+        $patients = json_decode(json_encode(DB::select('select userID from users where roleID = 5;')), true);
+        $regiments =[];
+        for($i=0; $i < count($patients); $i++){
+            $regiments[] = json_decode(json_encode(DB::select('select * from regiments where patientID ='. $patients[$i]['userID'].' order by date desc LIMIT 1;')), true);
+        }
+        return view('admin-report', ['dailyTask' => json_decode(json_encode($dailyTask), true)],['regiments' => $regiments]);
     }
 };
