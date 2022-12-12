@@ -229,6 +229,17 @@ class FinalController extends Controller
     }
 
 
+    public function addRole(Request $request){
+        $role = $request->input('role');
+        $accessLevel = $request->input('accessLevel');
+        Role::create([
+            'roleName' => $role,
+            'accessLevel'=> $accessLevel
+        ]);
+        return redirect('/newRole');
+    }
+
+
     public function newRegiment(Request $request) {
         $patient = $request->input("patientID");
         $comment = $request->input('comment');
@@ -272,6 +283,7 @@ class FinalController extends Controller
         return view('landing-page', compact('reg', 'takeMeds'));
 
     }
+
 
 }
 
