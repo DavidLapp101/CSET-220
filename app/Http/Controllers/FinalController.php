@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use App\Models\PatientInfo;
+use App\Models\Regiment;
 use App\Models\Role;
 use App\Models\Schedule;
 use App\Models\Salary;
@@ -212,6 +213,24 @@ class FinalController extends Controller
         PatientInfo::where('userID', $patient)->update(['balance'=>$balance]);
         $_POST['success'] = 'User '.$patient. " payment succesful";
         return redirect('/payments');
+    }
+
+    public function newRegiment(Request $request) {
+        $patient = $request->input("patientID");
+        $comment = $request->input('comment');
+        $morning = $request->input('morningMed');
+        $afternoon = $request->input('afternoonMed');
+        $evening = $request->input('eveningMed');
+        Regiment::create([
+            "doctorID" => $_SESSION["userID"],
+            "patientID" => $patient,
+            "comment" => $comment,
+            "date" => Date("Y-m-d"),
+            "morningMed" => $morning,
+            "afternoonMed" => $afternoon,
+            "eveningMed" => $evening
+        ]);
+        return redirect('/land');
     }
 
 }

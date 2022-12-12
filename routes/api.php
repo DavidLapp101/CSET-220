@@ -29,3 +29,4 @@ Route::post('/changeSalary', [FinalController::class, 'changeSalary']);
 Route::post('/changeSalary', [FinalController::class, 'changeSalary']);
 Route::post('/updateBalance', [FinalController::class, 'updateBalance']);
 Route::post('/makePayment', [FinalController::class, 'makePayment']);
+Route::post('/newRegiment', [FinalController::class, 'newRegiment']);
