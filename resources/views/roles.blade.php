@@ -4,6 +4,7 @@
 
  
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/role.css') }}">
     <h1>Role</h1>
 
     <div>

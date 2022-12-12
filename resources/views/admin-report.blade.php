@@ -4,6 +4,7 @@
 
  
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <h1>Admin's Report</h1>
 
     <form action="">

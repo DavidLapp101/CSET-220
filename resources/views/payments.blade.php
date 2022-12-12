@@ -4,6 +4,7 @@
 
  
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/payment.css') }}">
     <h1>Payments</h1>
     <div>
         <form action="">
