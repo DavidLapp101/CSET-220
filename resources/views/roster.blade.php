@@ -32,7 +32,7 @@
                     }
                     $findDate=0;
                     for($k=0; $k<count($supervisor); $k++){
-                        if($supervisor[0]['date']==$i){
+                        if($supervisor[$k]['date']==$i){
                             $findDate=$k;
                         }
                     }

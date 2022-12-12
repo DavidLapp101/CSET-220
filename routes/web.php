@@ -29,9 +29,7 @@ Route::get('/patientInfo', function(){
     return view('patientinfo');
 });
 
-Route::get('/land', function () {
-    return view('landing-page');
-});
+Route::get('/land', [finalController::class, 'land']);
 
 Route::get('/newAppointment', [patientinfoController::class, 'appointmentPaintent']);
 
@@ -56,3 +54,5 @@ Route::get('/patientOfDoctor', function () {
 Route::get('/payments',[patientinfoController::class, 'patientBalances']);
 
 Route::get('/roster', [patientinfoController::class, 'showRoster']);
+
+Route::get('/adminReport', [patientinfoController::class, 'adminReport']);
