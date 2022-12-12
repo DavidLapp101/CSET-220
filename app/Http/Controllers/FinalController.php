@@ -225,6 +225,15 @@ class FinalController extends Controller
         return redirect('/payments');
     }
 
+    public function addRole(Request $request){
+        $role = $request->input('role');
+        $accessLevel = $request->input('accessLevel');
+        Role::create([
+            'roleName' => $role,
+            'accessLevel'=> $accessLevel
+        ]);
+        return redirect('/newRole');
+    }
 }
 
 
