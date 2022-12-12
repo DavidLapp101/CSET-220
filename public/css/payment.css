@@ -17,14 +17,33 @@ html {
     float: center;
 }
 
-.search-filter {
-    margin: 50px;
-    text-align: center;
-
-}
-
 p {
     font-size: larger;
     margin: 20px;
     text-align: center;
+}
+
+input[type=number] {
+    padding: 5px;
+    background-color: rgb(194, 230, 217);
+    font-size: 15px;
+    width: 150px;
+    border: none;
+}
+
+input[type=submit] {
+    padding: 5px;
+    background-color: rgb(194, 230, 217);
+    font-size: 15px;
+    width: 50px;
+    border: none;
+}
+
+a {
+    padding: 5px;
+    background-color: grey;
+    font-size: 15px;
+    font-weight: 50;
+    width: 100px;
+    text-decoration: none;
 }
