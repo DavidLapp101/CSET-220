@@ -9,7 +9,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/land.css') }}">
-
     {{-- ADMIN HOME PAGE --}}
     <div class="land_level1" id="land_level1" style="display: none">
         <p>Admin</p>
@@ -105,9 +104,9 @@ if (session_status() === PHP_SESSION_NONE) {
                     <td><input type="checkbox" id="breakfast"></td>
                     <td><input type="checkbox" id="lunch"></td>
                     <td><input type="checkbox" id="dinner"></td>
+                    <td><input type="submit" value="Submit"></td>
                 </tr>
             </table>
-            <input type="submit" value="Submit"> 
         </form>
     </div>
 
@@ -160,51 +159,79 @@ if (session_status() === PHP_SESSION_NONE) {
                         $id = $_SESSION["userID"];
                         for($i=0; $i<count($reg); $i++){
                             if(($reg[$i]['patientID']==$id) && $reg[$i]['date']==$date){
+                                //shows doctors name
                                 if(is_null($reg[$i]['doctorName'])==false){
                                     echo"<td>".$reg[$i]['doctorName']."</td>";
                                 }
                                 else if(is_null($reg[$i]['doctorName'])){
                                     echo"<td>NO DOCTOR</td>";
                                 }
-                                if($reg[$i]['docApt']==1){
+
+                                //shows if appoinment was attended
+                                if(is_null($reg[$i]['doctorName'])){
+                                    echo"<td>-</td>";
+                                }
+                                else if($reg[$i]['docApt']==1){
                                     echo'<td><input type="checkbox" checked disabled></td>';
                                 }
                                 else if($reg[$i]['docApt']==0){
                                     echo'<td><input type="checkbox" disabled></td>';
                                 }
-                                else{
-                                    echo '-';
-                                }
+
+                                //shows caretaker Name
                                 echo '<td>'.$reg[$i]['caretakerID'].'</td>';
-                                if($reg[$i]['morningMed']==1){
+
+                                //Checks if morning medication was taken
+                                if(is_null($takeMeds[0]['morningMed'])){
+                                    echo'<td>-</td>';
+                                }
+                                else if($reg[$i]['morningMed']==1){
                                     echo'<td><input type="checkbox" checked disabled></td>';
                                 }
                                 else if($reg[$i]['morningMed']==0){
                                     echo'<td><input type="checkbox" disabled></td>';
                                 }
-                                if($reg[$i]['afternoonMed']==1){
+
+                                //checks if afternoon medication was taken
+                                if(is_null($takeMeds[0]['afternoonMed'])){
+                                    echo'<td>-</td>';
+                                }
+                                elseif($reg[$i]['afternoonMed']==1){
                                     echo'<td><input type="checkbox" checked disabled></td>';
                                 }
                                 else if($reg[$i]['afternoonMed']==0){
                                     echo'<td><input type="checkbox" disabled></td>';
                                 }
-                                if($reg[$i]['eveningMed']==1){
+
+                                //checks if evening medication was taken
+                                if(is_null($takeMeds[0]['eveningMed'])){
+                                    echo'<td>-</td>';
+                                }
+                                else if($reg[$i]['eveningMed']==1){
                                     echo'<td><input type="checkbox" checked disabled></td>';
                                 }
                                 else if($reg[$i]['eveningMed']==0){
                                     echo'<td><input type="checkbox" disabled></td>';
                                 }
+
+                                //Checks if breakfast was eaten
                                 if($reg[$i]['breakfast']==1){
                                     echo'<td><input type="checkbox" checked disabled></td>';
                                 }
                                 else if($reg[$i]['breakfast']==0){
                                     echo'<td><input type="checkbox" disabled></td>';
-                                }if($reg[$i]['lunch']==1){
+                                }
+                                
+                                //checks if lunch was eaten
+                                if($reg[$i]['lunch']==1){
                                     echo'<td><input type="checkbox" checked disabled></td>';
                                 }
                                 else if($reg[$i]['lunch']==0){
                                     echo'<td><input type="checkbox" disabled></td>';
-                                }if($reg[$i]['dinner']==1){
+                                }
+                                
+                                //checks if dinner was eaten
+                                if($reg[$i]['dinner']==1){
                                     echo'<td><input type="checkbox" checked disabled></td>';
                                 }
                                 else if($reg[$i]['dinner']==0){
@@ -301,5 +328,7 @@ if (session_status() === PHP_SESSION_NONE) {
         }
 
     </script>
-
+    
 @stop
+
+

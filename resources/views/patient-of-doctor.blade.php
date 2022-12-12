@@ -1,6 +1,7 @@
 <?php
     session_start(); 
     use App\Models\User;
+    use App\Models\Regiment;
 ?>
 @extends('header')
  
@@ -22,21 +23,52 @@
                 <th>Afternoon Med</th>
                 <th>Night Med</th>
             </tr>
+            <?php
+                $columns = ["date", "comment", "morningMed", "afternoonMed", "eveningMed"];
+                $regiments = json_decode(json_encode(DB::select("select * from regiments where patientID = ".$user->userID." order by date")), true);
+                for ($i=0; $i<count($regiments); $i++) {
+                    echo "<tr>";
+                    for ($j=0; $j<count($columns); $j++) {
+                        echo "<td>".$regiments[$i][$columns[$j]]."</td>";
+                    }
+                    echo "<tr>";
+                }
+            ?>
         </table>
     </div>
     <h1>Start New Prescription Regiment</h1>
     <div>
-        <form action="">
-            <input type="text" placeholder="Notes/Comments">
-            {{-- list of medications in the med table for all 3 selects --}}
-            <select name="morningMed" id="">
-                <option value=""></option>
+        <?php
+            $medications = json_decode(json_encode(DB::select("select * from medications")), true);
+        ?>
+        <form action="/api/newRegiment" method="post">
+            <?php
+                echo '<input type="number" name="patientID" id="patientID" readonly value='.$user->userID.'>'
+            ?>
+            <input type="text" name="comment" id="comment" placeholder="Notes/Comments">
+            <select name="morningMed" id="morningMed">
+                <option value=null selected>None</option>
+                <?php
+                    for ($i=0; $i<count($medications); $i++) {
+                        echo "<option value='".$medications[$i]['medicationID']."'>".$medications[$i]["medicationName"]."</option>";
+                    }
+                ?>
             </select>
-            <select name="morningMed" id="">
-                <option value=""></option>
+            <select name="afternoonMed" id="afternoonMed">
+                <option value=null selected>None</option>
+                <?php
+                    for ($i=0; $i<count($medications); $i++) {
+                        echo "<option value='".$medications[$i]['medicationID']."'>".$medications[$i]["medicationName"]."</option>";
+                    }
+                ?>
             </select>
-            <select name="morningMed" id="">
-                <option value=""></option>
+            <select name="eveningMed" id="eveningMed">
+                <option value=null selected>None</option>
+                <?php
+                    for ($i=0; $i<count($medications); $i++) {
+                        echo "<option value='".$medications[$i]['medicationID']."'>".$medications[$i]["medicationName"]."</option>";
+                    }
+                ?>
             </select>
             <input type="submit" value="Start Regiment">
             <a href="">Cancel</a>
