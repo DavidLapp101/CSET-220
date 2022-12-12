@@ -4,6 +4,7 @@
 
  
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/patient.css') }}">
     <h1>Patient Search</h1>
     <div>
         <form action="" class="search-form">
