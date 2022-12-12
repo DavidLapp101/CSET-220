@@ -23,5 +23,43 @@ p {
     text-align: center;
 }
 
+input[type=date] {
+    padding: 5px;
+    background-color: rgb(167, 181, 176);
+    font-size: 15px;
+    font-weight: 100;
+    width: 300px;
+}
 
+input[type=text] {
+    padding: 5px;
+    background-color: rgb(194, 230, 217);
+    font-size: 15px;
+    font-weight: 50;
+    width: 100px;
+}
 
+select[name=doctorID] {
+    padding: 5px;
+    background-color: rgb(194, 230, 217);
+    font-size: 15px;
+    font-weight: 50;
+    width: 100px;
+}
+
+input[type=submit] {
+    padding: 5px;
+    background-color: rgb(194, 230, 217);
+    font-size: 15px;
+    width: 50px;
+    border: none;
+}
+
+a {
+    padding: 5px;
+    background-color: grey;
+    font-size: 15px;
+    font-weight: 50;
+    width: 100px;
+    text-decoration: none;
+}

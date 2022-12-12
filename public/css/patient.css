@@ -29,3 +29,28 @@ p {
     text-align: center;
 }
 
+select[id=patientSearch] {
+    padding: 5px;
+    background-color: rgb(194, 230, 217);
+    font-size: 15px;
+    font-weight: 50;
+    width: 100px;
+    float: left;
+}
+
+
+input[type=text] {
+    padding: 5px;
+    background-color: rgb(194, 230, 217);
+    font-size: 15px;
+    width: 150px;
+    border: none;
+}
+
+th {
+    padding: 50px;
+    font-size: medium;
+    color: rgb(29, 2, 2);
+    float: center;
+    
+}
