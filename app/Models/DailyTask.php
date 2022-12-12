@@ -11,7 +11,6 @@ class DailyTask extends Model
 
     protected $table = "dailytasks";
 
-
     protected $fillable = [
         'date',
         'patientID',

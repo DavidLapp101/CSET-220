@@ -28,6 +28,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     <option value="/newAppointment" style="display: none;" id="mh-doctor-appointment">Doctor Appointment</option>
                     <option value="/patientInfo" style="display: none;" id="mh-additional-info">Additional Info</option>
                     <option value="/role" style="display: none;" id="mh-role">Role</option>
+                    <option value="/newRole" style="display: none" id="mh-add-role">Add Role</option>
                     <option value="/employees" style="display: none;" id="mh-employee">Employee</option>
                     <option value="/patientSearch" style="display: none;" id="mh-patients">Patients</option>
                     <option value="/accountApproval" style="display: none;" id="mh-registration-approval">Registration Approval</option>
@@ -58,6 +59,7 @@ if (session_status() === PHP_SESSION_NONE) {
         const newRoster = document.getElementById('mh-new-roster');
         const adminReport = document.getElementById('mh-admin-report');
         const payment = document.getElementById('mh-payment');
+        const addRole = document.getElementById('mh-add-role');
 
         //Checks what Page user is on to set dropdown value
         if(document.URL.includes('/patientSearch')){
@@ -93,6 +95,10 @@ if (session_status() === PHP_SESSION_NONE) {
         else if(document.URL.includes('/payments')){
             payment.selected = 'true'
         }
+        else if(document.URL.includes('/newRole')){
+            addRole.selected = 'true'
+        }
+
 
         //Checks users access level to figure out what the dropdown has
         //ADMIN
@@ -106,6 +112,7 @@ if (session_status() === PHP_SESSION_NONE) {
             newRoster.style.display = 'block';
             adminReport.style.display = 'block';
             payment.style.display = 'block';
+            addRole.style.display = 'block';
         }
         //SUPERVISOR
         else if(dropdownAccess==2){

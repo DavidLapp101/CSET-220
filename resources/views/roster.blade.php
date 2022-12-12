@@ -4,6 +4,7 @@
 
  
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/roster.css') }}">
     <h1>Roster</h1>
     <form action="/roster" method="GET">
         <input type="date" name = "date" id="date">

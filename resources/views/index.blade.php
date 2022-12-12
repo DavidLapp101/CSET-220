@@ -52,6 +52,11 @@
           </h3>
           <span>1100 Orange Street Lancaster,PA</span>
         </p>
+        <h3>
+          IC Department Info
+        </h3>
+        <span> 717-250-9707 </span>
+      </p>
       </div>
     </div>
     </div>
@@ -69,8 +74,10 @@
                     <li><a href="#">Enrollment</a></li>
                     <li><a href="#">Documents and Forms</a></li>
                     <li><a href="#">Services</a></li>
+                    <li><a href="#">Career</a></li>    
                     <li><a href="#">Contact Us</a></li>
-                </ul>
+                    <li><a href="#">Apply Online</a></li>
+            </ul>
             </div>
       
             <div class="footer-subscribe">
@@ -88,3 +95,7 @@
             Copyright &copy; 2021 All rights reserved | Design by US</a>
         </small>
       </footer>
+
+      <script>
+
+        </script>
