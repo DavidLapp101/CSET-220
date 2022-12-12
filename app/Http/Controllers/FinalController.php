@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use App\Models\DailyTask;
 use App\Models\PatientInfo;
+use App\Models\Regiment;
 use App\Models\Role;
 use App\Models\Schedule;
 use App\Models\Salary;
@@ -227,6 +228,25 @@ class FinalController extends Controller
         return redirect('/payments');
     }
 
+
+    public function newRegiment(Request $request) {
+        $patient = $request->input("patientID");
+        $comment = $request->input('comment');
+        $morning = $request->input('morningMed');
+        $afternoon = $request->input('afternoonMed');
+        $evening = $request->input('eveningMed');
+        Regiment::create([
+            "doctorID" => $_SESSION["userID"],
+            "patientID" => $patient,
+            "comment" => $comment,
+            "date" => Date("Y-m-d"),
+            "morningMed" => $morning,
+            "afternoonMed" => $afternoon,
+            "eveningMed" => $evening
+        ]);
+        return redirect('/land');
+    }
+
     public function land(){
         //for patient Home Page
         $reg = json_decode(json_encode(DB::select('select doctorID, dailyTasks.patientID, dailytasks.date, dailytasks.docApt, dailytasks.morningMed, dailytasks.afternoonMed, dailytasks.eveningMed, dailytasks.breakfast, dailytasks.lunch, dailytasks.dinner, patientinfo.groupNum, 
@@ -250,6 +270,7 @@ class FinalController extends Controller
 
         //for cargiver Home Page
         return view('landing-page', compact('reg', 'takeMeds'));
+
     }
 
 }
