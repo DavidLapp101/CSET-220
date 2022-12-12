@@ -260,13 +260,9 @@ class FinalController extends Controller
 
     public function land(){
         //for patient Home Page
-        $reg = json_decode(json_encode(DB::select('select doctorID, dailyTasks.patientID, dailytasks.date, dailytasks.docApt, dailytasks.morningMed, dailytasks.afternoonMed, dailytasks.eveningMed, dailytasks.breakfast, dailytasks.lunch, dailytasks.dinner, patientinfo.groupNum, 
-        case 
-        WHEN patientinfo.groupNum = 1 THEN (select name FROM users INNER JOIN schedules ON (users.userID = schedules.groupOneCarer) WHERE schedules.date = curdate()) 
-        WHEN patientinfo.groupNum = 2 THEN (select name FROM users INNER JOIN schedules ON (users.userID = schedules.groupTwoCarer) WHERE schedules.date = curdate()) 
-        WHEN patientinfo.groupNum = 3 THEN (select name FROM users INNER JOIN schedules ON (users.userID = schedules.groupThreeCarer) WHERE schedules.date = curdate()) 
-        WHEN patientinfo.groupNum = 4 THEN (select name FROM users INNER JOIN schedules ON (users.userID = schedules.groupFourCarer) WHERE schedules.date = curdate()) 
-        END AS caretakerID,
+        $reg = json_decode(json_encode(DB::select('select doctorID, dailyTasks.patientID, dailytasks.date, 
+        dailytasks.docApt, dailytasks.morningMed, dailytasks.afternoonMed, dailytasks.eveningMed, dailytasks.breakfast, 
+        dailytasks.lunch, dailytasks.dinner, patientinfo.groupNum,
         CASE
         WHEN doctorID IS NOT NULL THEN (select name FROM users WHERE users.userID=doctorID)
         END AS doctorName,
@@ -278,12 +274,46 @@ class FinalController extends Controller
         schedules on(dailytasks.date = schedules.date) LEFT JOIN
         appointments on (appointments.date = dailytasks.date and appointments.patientID = dailytasks.patientID);')), true);
         $takeMeds = json_decode(json_encode(DB::select('select patientID, date, morningMed, afternoonMed, eveningMed from regiments where patientID='.$_SESSION["userID"].' order by date desc LIMIT 1;')), true);
-
+        $caregiverAll = json_decode(json_encode(DB::select('select * from schedules;')), true);
+        $caregiverOneName = json_decode(json_encode(DB::select('select date, name FROM schedules INNER JOIN users on (schedules.groupOneCarer = users.userID) ORDER BY schedules.date DESC;')), true);
+        $caregiverTwoName = json_decode(json_encode(DB::select('select date, name FROM schedules INNER JOIN users on (schedules.groupTwoCarer = users.userID) ORDER BY schedules.date DESC;')), true);
+        $caregiverThreeName = json_decode(json_encode(DB::select('select date, name FROM schedules INNER JOIN users on (schedules.groupThreeCarer = users.userID) ORDER BY schedules.date DESC;')), true);
+        $caregiverFourName = json_decode(json_encode(DB::select('select date, name FROM schedules INNER JOIN users on (schedules.groupFourCarer = users.userID) ORDER BY schedules.date DESC;')), true);
+        
         //for cargiver Home Page
+        $caregiverPatientInfo = json_decode(json_encode(DB::select('select dailytasks.patientID, dailytasks.date, 
+        dailytasks.morningMed, dailytasks.afternoonMed, dailytasks.eveningMed,
+        dailytasks.breakfast, dailytasks.lunch, dailytasks.dinner, patientinfo.groupNum, dailytasks.docApt,
+        CASE
+        WHEN dailytasks.patientID IS NOT NULL THEN (select name FROM users WHERE users.userID=dailytasks.patientID)
+        END AS patientName 
+        from dailytasks INNER JOIN patientinfo on(dailytasks.patientID = patientinfo.UserID)
+        where dailytasks.date = curdate();')), true);
+        $patients = json_decode(json_encode(DB::select('select userID from users where roleID = 5;')), true);
+        $regiments =[];
+        for($i=0; $i < count($patients); $i++){
+            $regiments[] = json_decode(json_encode(DB::select('select * from regiments where patientID ='. $patients[$i]['userID'].' order by date desc LIMIT 1;')), true);
+        }
+        return view('landing-page', compact('reg', 'takeMeds', 'caregiverOneName', 'caregiverTwoName', 'caregiverThreeName', 'caregiverFourName', 'caregiverPatientInfo', 'caregiverAll', 'regiments'));
+    }
+
+    public function caregiverUpdatePatient(Request $request){
+        print_r ($request->all());
+        $apt = $request->filled('docApt')? 1 : 0;
+        $morningMed = $request->filled('morningMed')? 1 : 0;
+        $afternoonMed = $request->filled('afternoonMed')? 1 : 0;
+        $eveningMed = $request->filled('eveningMed')? 1 : 0;
+        $breakfast = $request->filled('breakfast')? 1 : 0;
+        $lunch = $request->filled('lunch')? 1 : 0;
+        $dinner = $request->filled('dinner')? 1 : 0;
+        $patientID = $request->input('patientID');
+        $date = Date('Y-m-d');
+
+        DailyTask::where('patientID', $patientID)->where('date', $date)->update(['morningMed' => $morningMed, 'docApt' => $apt, 'afternoonMed' => $afternoonMed, 'eveningMed' => $eveningMed, 'breakfast' => $breakfast, 'lunch' => $lunch, 'dinner' => $dinner]);
+        return redirect('/land');
         return view('landing-page', compact('reg', 'takeMeds'));
 
     }
-
 
 }
 
