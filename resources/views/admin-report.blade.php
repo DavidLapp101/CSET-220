@@ -4,6 +4,7 @@
 
  
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <h1>Admin's Report</h1>
 
     <h2>Date: <?php echo date("Y-m-d"); ?></h2>

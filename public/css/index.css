@@ -7,6 +7,10 @@ header{
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 20px;
     padding: 50px;
+    font-family: cursive;
+    font-style: italic;
+    font-variant: small-caps;
+    color: white;
 }
 
 .row-flex {
@@ -31,6 +35,7 @@ header{
     letter-spacing: 2px;
     border: 0;
 }
+
 
 .btn.btn-primary:hover {
     background-color: #159f4c;

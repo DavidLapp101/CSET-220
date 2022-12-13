@@ -4,6 +4,7 @@
 
  
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/roster.css') }}">
     <h1>Roster</h1>
     <form action="/roster" method="GET">
         <input type="date" name = "date" id="date">
@@ -32,7 +33,7 @@
                     }
                     $findDate=0;
                     for($k=0; $k<count($supervisor); $k++){
-                        if($supervisor[0]['date']==$i){
+                        if($supervisor[$k]['date']==$i){
                             $findDate=$k;
                         }
                     }
