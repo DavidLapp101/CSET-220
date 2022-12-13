@@ -10,3 +10,27 @@ p {
     padding: 30px;
     float: center;
 }
+
+input[type=submit] {
+    padding: 5px;
+    background-color: rgb(194, 230, 217);
+    font-size: 15px;
+    width: 80px;
+    border: none;
+}
+
+input[type=date] {
+    padding: 5px;
+    background-color: rgb(194, 230, 217);
+    font-size: 15px;
+    width: 120px;
+    border: none;
+}
+
+th {
+    text-align: center;
+    padding: 30px;
+    font-size: large;
+    color: rgb(29, 2, 2);
+}
+
