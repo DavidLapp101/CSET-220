@@ -13,9 +13,9 @@ if (session_status() === PHP_SESSION_NONE) {
 </head>
 <body>
 
-    <p id="test-user-name"><?php echo($_SESSION["name"]); ?></p>
-    <p id="test-userID"><?php echo($_SESSION["userID"]); ?></p>
-    <p id="test-user-level"><?php echo($_SESSION["accessLevel"]); ?></p>
+    <p id="test-user-name" style="display: none"><?php echo($_SESSION["name"]); ?></p>
+    <p id="test-userID" style="display: none"><?php echo($_SESSION["userID"]); ?></p>
+    <p id="test-user-level" style="display: none"><?php echo($_SESSION["accessLevel"]); ?></p>
 
     <div class="master-header">
         <div class="master-header-left">
