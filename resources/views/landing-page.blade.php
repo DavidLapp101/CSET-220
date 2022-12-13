@@ -209,6 +209,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 <input type="submit">
             </form>
             <?php
+            if ($_SESSION["accessLevel"] == 5) {
                 if(isset($_GET['date'])){
                     $date=$_GET['date'];
                 }
@@ -223,6 +224,8 @@ if (session_status() === PHP_SESSION_NONE) {
                         echo '<p>Patient Name: '.$reg[$i]['patientName'].'</p>';
                     }
                 }
+            }
+                
             ?>
             <table>
                 <tr>
@@ -238,6 +241,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </tr>
                 <tr>
                     <?php
+                    if ($_SESSION["accessLevel"] == 5) {
                         if(isset($_GET['date'])){
                             $date=$_GET['date'];
                         }
@@ -341,6 +345,7 @@ if (session_status() === PHP_SESSION_NONE) {
                                 }
                             }
                         }  
+                    }
                     ?>
                 </tr>
             </table>
@@ -350,18 +355,18 @@ if (session_status() === PHP_SESSION_NONE) {
     {{-- FAMILY MEMEBER HOME PAGE --}}
     <div class="land_level6" id="land_level6" style="display: none">
         <p>Family Member</p>
-        <form class="landing-page-family-member-patient-info">
-            <input type="date" id="date" required>
-            <input type="text" id="family_code" required>
-            <input type="test" id="patient_id" required>
+        <form class="landing-page-family-member-patient-info" action="/api/viewFamilyTasks" method="post">
+            <input type="date" name="date" id="date" required>
+            <input type="text" name="family-code" id="family-code" required placeholder="Family Code">
+            <input type="number" name="patient-id" id="patient-id" required placeholder="Patient ID">
             <input type="submit" value="submit">
             <button id="cancel">Cancel</button>
         </form>
         <table>
             <tr>
-                <th>Doctor's Name</th>
-                <th>Doctors Appointment</th>
-                <th>Caregiver's Name</th>
+                <th>Patient Name</th>
+                <th>Doctor Appointment</th>
+                <th>Caregiver Name</th>
                 <th>Morning Medicine</th>
                 <th>Afternoon Medicine</th>
                 <th>Night Medicine</th>
@@ -369,16 +374,59 @@ if (session_status() === PHP_SESSION_NONE) {
                 <th>Lunch</th>
                 <th>Dinner</th>
             </tr>
-            <tr>
-                <td>######</td>
-                <td>######</td>
-                <td>######</td>
-                <td>######</td>
-                <td>######</td>
-                <td>######</td>
-                <td>######</td>
-                <td>######</td>
-                <td>######</td>
+            <tr class="familyReportList">
+            <?php
+                if (isset($_POST["patient-id"])) {
+                    echo '<td class="familyReportList-patientName">'. $dailyTasks['patientName']. '</td>';
+                    echo '<td class="familyReportList-doctorName">'. $dailyTasks['doctorName']. '</td>'; 
+                    echo '<td class="familyReportList-cargiver">'. $dailyTasks['caretakerID']. '</td>';
+                    if(is_null($regiment['morningMed'])){
+                        echo '<td> - </td>';
+                    }
+                    else if($dailyTasks['morningMed']== 1){
+                        echo'<td><input type="checkbox" checked disabled></td>';
+                    }
+                        else if($dailyTasks['morningMed']==0){
+                        echo'<td><input type="checkbox" disabled></td>';
+                    }
+                    if(is_null($regiment['afternoonMed'])){
+                        echo '<td> - </td>';
+                    }
+                    else if($dailyTasks['afternoonMed']== 1){
+                        echo'<td><input type="checkbox" checked disabled></td>';
+                    }
+                        else if($dailyTasks['afternoonMed']==0){
+                        echo'<td><input type="checkbox" disabled></td>';
+                    }
+                    if(is_null($regiment['eveningMed'])){
+                        echo '<td> - </td>';
+                    }
+                    else if($dailyTasks['eveningMed']== 1){
+                        echo'<td><input type="checkbox" checked disabled></td>';
+                    }
+                        else if($dailyTasks['eveningMed']==0){
+                        echo'<td><input type="checkbox" disabled></td>';
+                    }
+                    if($dailyTasks['breakfast']== 1){
+                        echo'<td><input type="checkbox" checked disabled></td>';
+                    }
+                        else if($dailyTasks['breakfast']==0){
+                        echo'<td><input type="checkbox" disabled></td>';
+                    }
+                    if($dailyTasks['lunch']== 1){
+                        echo'<td><input type="checkbox" checked disabled></td>';
+                    }
+                        else if($dailyTasks['lunch']==0){
+                        echo'<td><input type="checkbox" disabled></td>';
+                    }
+                    if($dailyTasks['dinner']== 1){
+                        echo'<td><input type="checkbox" checked disabled></td>';
+                    }
+                        else if($dailyTasks['dinner']==0){
+                        echo'<td><input type="checkbox" disabled></td>';
+                    }
+                }
+            ?>
             </tr>
         </table>
     </div>

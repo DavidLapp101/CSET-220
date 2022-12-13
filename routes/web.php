@@ -16,20 +16,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('login-register');
-
 });
- Route::get('/index', function () {
-    return view('index');
- });
- 
-//     return view('login-register');
-// });
+//  Route::get('/index', function () {
+//     return view('index');
+//  });
+
 
 Route::get('/patientInfo', function(){
     return view('patientinfo');
 });
 
-Route::get('/land', [finalController::class, 'land']);
+Route::get('/land', [FinalController::class, 'land']);
 
 Route::get('/newAppointment', [patientinfoController::class, 'appointmentPaintent']);
 

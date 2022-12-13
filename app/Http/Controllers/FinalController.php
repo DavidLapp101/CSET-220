@@ -35,6 +35,13 @@ class FinalController extends Controller
             'reg-relation' => "string"
         ]);
 
+        if ($fields['reg-role'] == 5) {
+            $status = "pending";
+        }
+        else {
+            $status = "approved";
+        }
+
         $user = User::create([
             'roleID' => $fields['reg-role'],
             'name' => $fields['reg-name'],
@@ -42,6 +49,7 @@ class FinalController extends Controller
             'phone' => $fields['reg-phone'],
             'password' => bcrypt($fields['reg-pass']),
             'dateOfBirth' => $fields['reg-dob'],
+            'accountStatus' => $status
         ]);
 
         $userID = json_decode(json_encode(DB::select("select userID from users order by created_at desc limit 1;")), true)[0]["userID"];
@@ -212,7 +220,7 @@ class FinalController extends Controller
                 }
             
             }
-            PatientInfo::where('userID', $patients[$i]->userID)->update(['balance' => $balance], ['lastBalanceUpdate' => date('Y-m-d')]);
+            PatientInfo::where('userID', $patients[$i]->userID)->update(['balance' => $balance], ['lastBalanceUpdate' => Date('Y-m-d')]);
         }
         
     }
