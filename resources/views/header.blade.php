@@ -32,6 +32,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     <option value="/employees" style="display: none;" id="mh-employee">Employee</option>
                     <option value="/patientSearch" style="display: none;" id="mh-patients">Patients</option>
                     <option value="/accountApproval" style="display: none;" id="mh-registration-approval">Registration Approval</option>
+                    <option value="/assignGroup" style="display: none;" id="mh-assign-group">Assign Group</option>
                     <option value="/roster" id="mh-roster">Roster</option>
                     <option value="/newRoster" style="display: none;" id="mh-new-roster">New Roster</option>
                     <option value="/adminReport" style="display: none;" id="mh-admin-report">Admins Report</option>
@@ -60,6 +61,7 @@ if (session_status() === PHP_SESSION_NONE) {
         const adminReport = document.getElementById('mh-admin-report');
         const payment = document.getElementById('mh-payment');
         const addRole = document.getElementById('mh-add-role');
+        const assignGroup = document.getElementById('mh-assign-group');
 
         //Checks what Page user is on to set dropdown value
         if(document.URL.includes('/patientSearch')){
@@ -97,6 +99,9 @@ if (session_status() === PHP_SESSION_NONE) {
         }
         else if(document.URL.includes('/newRole')){
             addRole.selected = 'true'
+        }
+        else if(document.URL.includes('/assignGroup')){
+            assignGroup.selected = 'true'
         }
 
 
