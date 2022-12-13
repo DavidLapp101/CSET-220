@@ -68,7 +68,7 @@
                         use App\Models\Role;
                         $roles = json_decode(json_encode(Role::all()), true);
                             for ($i=0; $i<count($roles); $i++) {
-                                echo "<option value='".$roles[$i]["roleID"]."'>".$roles[$i]["roleName"]."</option>";
+                                echo "<option value=".$roles[$i]["roleID"].">".$roles[$i]["roleName"]."</option>";
                             }
                         ?>
                     </select>

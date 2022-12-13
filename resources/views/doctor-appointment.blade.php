@@ -45,7 +45,6 @@
         var option2 = document.createElement("option");
         function checkDate(val){
             for(let i=0; i<doc1.length; i++){
-                console.log('hello')
                 if(doc1[i]['date'] == val){
                     option.text=doc1[i]['name'];
                     option.value=doc1[i]['userID'];
