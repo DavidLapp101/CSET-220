@@ -57,4 +57,6 @@ Route::get('/roster', [patientinfoController::class, 'showRoster']);
 
 Route::get('/adminReport', [patientinfoController::class, 'adminReport']);
 
+Route::get('/assignGroup', [patientinfoController::class, 'groupless']);
+
 Route::get('/newRole', [patientinfoController::class, 'roleList']);

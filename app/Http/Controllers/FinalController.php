@@ -188,8 +188,9 @@ class FinalController extends Controller
 
     public function updateBalance(Request $request){
         $patients = PatientInfo::all();
+
         for($i=0; $i<count($patients); $i++){
-            $balance = 0;
+            $balance = $patients[$i]->balance;
             $datediff = DB::select('select timestampdiff(day, lastBalanceUpdate, curdate()) as "days" from patientinfo where userID='.$patients[$i]->userID)[0];
             $balance += 10*json_decode(json_encode($datediff), true)["days"];
 
@@ -209,7 +210,8 @@ class FinalController extends Controller
                 }
             
             }
-            PatientInfo::where('userID', $patients[$i]->userID)->update(['balance' => $balance], ['lastBalanceUpdate' => date('Y-m-d')]);
+            PatientInfo::where('userID', $patients[$i]->userID)->update(['balance' => $balance, 'lastBalanceUpdate' => date('Y-m-d')]);
+            return redirect('payments');
         }
         
     }
@@ -233,6 +235,13 @@ class FinalController extends Controller
             'accessLevel'=> $accessLevel
         ]);
         return redirect('/newRole');
+    }
+
+    public function assignGroup(Request $request){
+        $patient = $request->input('patient');
+        $group = $request->input('groupNum');
+        PatientInfo::where('userID', $patient)->update(['groupNum'=>$group]);
+        return redirect('/assignGroup');
     }
 }
 

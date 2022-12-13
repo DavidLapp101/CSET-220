@@ -114,4 +114,10 @@ class patientinfoController extends Controller
         $existingRoles = DB::select('select roleName, accessLevel from roles;');
         return view('new-role', ['roles'=> json_decode(json_encode($existingRoles), true)]);
     }
+
+
+    public function groupless(){
+        $list = DB::select("select patientinfo.userID, users.name from users join patientinfo on(patientinfo.userID=users.userID) where users.accountStatus='approved' and patientinfo.groupNum IS NULL;");
+        return view('assign-group', ['groupless' => json_decode(json_encode($list), true)]);
+    }
 };
