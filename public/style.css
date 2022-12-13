@@ -76,7 +76,7 @@ color: rgb(29, 6, 6);
     border-radius: 10px;
     width: 33vw;
     padding: 15px;
-    background-color: lightgray;
+    background-color: rgb(118, 154, 118);
 }
 #register-div input, #register-div select {
     display: block;
@@ -97,6 +97,7 @@ color: rgb(29, 6, 6);
     margin: 5px auto;
 }
 #account-body {
+    height: 80vh;
     background-image: url("./oldpeople.jpeg");
     background-position: top left;
     background-size: cover;
