@@ -90,6 +90,7 @@ class patientinfoController extends Controller
         return view('admin-report', ['dailyTask' => json_decode(json_encode($dailyTask), true)],['regiments' => $regiments]);
     }
 
+
     function viewFamilyTasks(Request $request) {
         $date = $request->input("date");
         $code = $request->input("family-code");
@@ -119,6 +120,12 @@ class patientinfoController extends Controller
         
         return redirect("/land");
 
+    }
+
+
+    public function rolelist(){
+        $existingRoles = DB::select('select roleName, accessLevel from roles;');
+        return view('new-role', ['roles'=> json_decode(json_encode($existingRoles), true)]);
     }
 
 };

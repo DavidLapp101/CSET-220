@@ -13,8 +13,14 @@ html {
 .container {
     background-color: rgb(17, 95, 114);
     margin: 50px;
-    padding: 80px;
+    padding: 30px;
     float: center;
+}
+
+.search-filter {
+    margin: 50px;
+    text-align: center;
+
 }
 
 p {
@@ -23,43 +29,28 @@ p {
     text-align: center;
 }
 
-input[type=date] {
+select[id=patientSearch] {
     padding: 5px;
-    background-color: rgb(167, 181, 176);
+    background-color: rgb(194, 230, 217);
     font-size: 15px;
-    font-weight: 100;
-    width: 300px;
+    font-weight: 50;
+    width: 100px;
+    float: left;
 }
+
 
 input[type=text] {
     padding: 5px;
     background-color: rgb(194, 230, 217);
     font-size: 15px;
-    font-weight: 50;
-    width: 100px;
-}
-
-select[name=doctorID] {
-    padding: 5px;
-    background-color: rgb(194, 230, 217);
-    font-size: 15px;
-    font-weight: 50;
-    width: 100px;
-}
-
-input[type=submit] {
-    padding: 5px;
-    background-color: rgb(194, 230, 217);
-    font-size: 15px;
-    width: 50px;
+    width: 150px;
     border: none;
 }
 
-a {
-    padding: 5px;
-    background-color: grey;
-    font-size: 15px;
-    font-weight: 50;
-    width: 100px;
-    text-decoration: none;
+th {
+    padding: 50px;
+    font-size: medium;
+    color: rgb(29, 2, 2);
+    float: center;
+    
 }

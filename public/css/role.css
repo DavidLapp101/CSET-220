@@ -13,7 +13,7 @@ html {
 .container {
     background-color: rgb(17, 95, 114);
     margin: 50px;
-    padding: 80px;
+    padding: 30px;
     float: center;
 }
 
@@ -23,35 +23,27 @@ p {
     text-align: center;
 }
 
-input[type=date] {
-    padding: 5px;
-    background-color: rgb(167, 181, 176);
-    font-size: 15px;
-    font-weight: 100;
-    width: 300px;
-}
-
 input[type=text] {
     padding: 5px;
     background-color: rgb(194, 230, 217);
     font-size: 15px;
-    font-weight: 50;
     width: 100px;
+    border: none;
 }
 
-select[name=doctorID] {
+select[name=accessLevel] {
     padding: 5px;
     background-color: rgb(194, 230, 217);
     font-size: 15px;
     font-weight: 50;
-    width: 100px;
+    width: 50px;
 }
 
 input[type=submit] {
     padding: 5px;
     background-color: rgb(194, 230, 217);
     font-size: 15px;
-    width: 50px;
+    width: 80px;
     border: none;
 }
 
@@ -63,3 +55,4 @@ a {
     width: 100px;
     text-decoration: none;
 }
+

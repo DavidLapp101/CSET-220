@@ -4,6 +4,7 @@
 
  
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/roster.css') }}">
     <h1>Roster</h1>
     <form action="/roster" method="GET">
         <input type="date" name = "date" id="date">
@@ -17,10 +18,10 @@
                 <th>Supervisor</th>
                 <th>Doctor1</th>
                 <th>Doctor2</th>
-                <th>caregiver1</th>
-                <th>caregiver2</th>
-                <th>caregiver3</th>
-                <th>caregiver4</th>
+                <th>Group One Caregiver</th>
+                <th>Group Two Caregiver</th>
+                <th>Group Three Caregiver</th>
+                <th>Group Four Caregiver</th>
             </tr>
             <tr>
                 <?php 

@@ -13,7 +13,7 @@
         <input type="text" placeholder="Patient ID" name="patientID" onchange="checkName(this.value)">
         <p id="newName"></p>
 
-        <label for="Date">Choose a Date</label>
+        <label for="Date">Choose a Date</label> 
         <input type="date" name="date" onchange="checkDate(this.value)">
 
         <label for="availableDoctors">Doctor:</label>

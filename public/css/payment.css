@@ -13,7 +13,7 @@ html {
 .container {
     background-color: rgb(17, 95, 114);
     margin: 50px;
-    padding: 80px;
+    padding: 30px;
     float: center;
 }
 
@@ -23,28 +23,12 @@ p {
     text-align: center;
 }
 
-input[type=date] {
-    padding: 5px;
-    background-color: rgb(167, 181, 176);
-    font-size: 15px;
-    font-weight: 100;
-    width: 300px;
-}
-
-input[type=text] {
+input[type=number] {
     padding: 5px;
     background-color: rgb(194, 230, 217);
     font-size: 15px;
-    font-weight: 50;
-    width: 100px;
-}
-
-select[name=doctorID] {
-    padding: 5px;
-    background-color: rgb(194, 230, 217);
-    font-size: 15px;
-    font-weight: 50;
-    width: 100px;
+    width: 150px;
+    border: none;
 }
 
 input[type=submit] {

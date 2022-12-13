@@ -13,8 +13,14 @@ html {
 .container {
     background-color: rgb(17, 95, 114);
     margin: 50px;
-    padding: 80px;
+    padding: 30px;
     float: center;
+}
+
+.search-filter {
+    margin: 50px;
+    text-align: center;
+
 }
 
 p {
@@ -23,35 +29,36 @@ p {
     text-align: center;
 }
 
-input[type=date] {
+input[type=number] {
     padding: 5px;
-    background-color: rgb(167, 181, 176);
+    background-color: rgb(194, 230, 217);
     font-size: 15px;
-    font-weight: 100;
-    width: 300px;
+    width: 120px;
+    border: none;
+}
+
+select[id=employeeSearch] {
+    padding: 5px;
+    background-color: rgb(194, 230, 217);
+    font-size: 15px;
+    font-weight: 50;
+    width: 100px;
+    float: right;
 }
 
 input[type=text] {
     padding: 5px;
     background-color: rgb(194, 230, 217);
     font-size: 15px;
-    font-weight: 50;
-    width: 100px;
-}
-
-select[name=doctorID] {
-    padding: 5px;
-    background-color: rgb(194, 230, 217);
-    font-size: 15px;
-    font-weight: 50;
-    width: 100px;
+    width: 80px;
+    border: none;
 }
 
 input[type=submit] {
     padding: 5px;
     background-color: rgb(194, 230, 217);
     font-size: 15px;
-    width: 50px;
+    width: 120px;
     border: none;
 }
 
@@ -63,3 +70,10 @@ a {
     width: 100px;
     text-decoration: none;
 }
+
+th {
+    padding: 50px;
+    font-size: large;
+    color: rgb(29, 2, 2);
+}
+

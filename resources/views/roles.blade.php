@@ -4,13 +4,14 @@
 
  
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/role.css') }}">
     <h1>Role</h1>
 
     <div>
         <table>
             <tr>
-                <th>Role</th>
-                <th>Access Level</th>
+                <th> <h2> Role </h2> </th>
+                <th> <h2> Access Level </h2> </th>
             </tr>
         </table>
     </div>

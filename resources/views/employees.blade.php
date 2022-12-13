@@ -4,6 +4,7 @@
 
  
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/employee.css') }}">
     <h1>Employee</h1>
     <div>
         <form action="" class="search-form">

@@ -1,6 +1,16 @@
-html {
-    background-color: lightgoldenrodyellow;
+p {
+    font-size: larger;
+    margin: 20px;
+    text-align: center;
 }
+
+.container {
+    background-color: rgb(17, 95, 114);
+    margin: 50px;
+    padding: 30px;
+    float: center;
+}
+
 
 h1 {
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -22,7 +32,7 @@ input[type=date] {
 label{
     font-size: 20px;
     margin-top: 20px;
-    color: rgb(16, 116, 150);
+    color: rgb(17, 24, 26);
     font-size: 30px;
     margin: 300px;
     padding: 100px;
@@ -30,21 +40,26 @@ label{
 }
 
 input[type=submit] {
-    padding:5px 5px; 
-   color: blue;
-    border:0 none;
-    border-radius: 5px; 
-    font-size: 20px;    
-    width: 100px;
-    margin: 10px;
+    padding: 5px;
+    background-color: rgb(194, 230, 217);
+    font-size: 15px;
+    width: 120px;
+    border: none;
 }
 
+
 button{
-    color: blue;
-    padding:5px 5px; 
-    border:0 none;
-    border-radius: 5px; 
-    font-size: 20px;
-    width: 100px;
-    margin: 100px;
+    padding: 5px;
+    background-color: rgb(194, 230, 217);
+    font-size: 15px;
+    width: 120px;
+    border: none;
+}
+
+select[class=new-roster-select] {
+    padding: 5px;
+    background-color: rgb(194, 230, 217);
+    font-size: 15px;
+    width: 80px;
+    border: none;
 }
