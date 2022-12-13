@@ -1,3 +1,8 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 @extends('header')
  
 @section('title', 'Page Title')
@@ -41,12 +46,18 @@
     </div>
 
     <div>
+        <?php 
+        if($_SESSION['accessLevel']==1){
+            echo'
+        
         <form action="/api/changeSalary" method="post">
             <input type="number" name="employee" placeholder="Employee ID">
             <input type="number" name="salary" placeholder="New Salary">
             <input type="submit" value="OK">
             <a href="">Cancel</a>
-        </form>
+        </form>';
+        }
+        ?>
     </div>
 
     <script>

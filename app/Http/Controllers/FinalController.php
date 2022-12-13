@@ -164,7 +164,7 @@ class FinalController extends Controller
             return redirect('/employees');
         }
         else{
-            echo "somethin";
+            return redirect('/employees');
         }
     }
 
