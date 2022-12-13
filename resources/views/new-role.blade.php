@@ -6,7 +6,7 @@
 @section('content')
 <div>
 <h1>Add new Role</h1>
-
+<link rel="stylesheet" href="{{ asset('css/newRole.css') }}"> 
 <form action="/api/addRole" method="post">
     <input type="text" placeholder="Role Name" id="role" name="role">
     <select name="accessLevel" id="accessLevel">
