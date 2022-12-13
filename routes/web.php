@@ -17,14 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('login-register');
 });
-//  Route::get('/index', function () {
-//     return view('index');
-//  });
-
-
-Route::get('/patientInfo', function(){
-    return view('patientinfo');
-});
 
 Route::get('/land', [FinalController::class, 'land']);
 
@@ -39,8 +31,6 @@ Route::get('/employees', [patientinfoController::class, 'listEmployees']);
 Route::get('/patientSearch', [patientinfoController::class, 'listPatients']);
 
 Route::get('/accountApproval',[patientinfoController::class, 'pendingUsers' ]);
-
-// route::post('/acceptDecline', [FinalController::class, 'acceptDeclineUsers']);
 
 Route::get('/newRoster',[patientinfoController::class, 'createRoster']);
 

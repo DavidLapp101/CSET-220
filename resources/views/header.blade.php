@@ -26,8 +26,6 @@ if (session_status() === PHP_SESSION_NONE) {
                 <select name="mh-page" onchange="location = this.value;">
                     <option value="/land">Home</option>
                     <option value="/newAppointment" style="display: none;" id="mh-doctor-appointment">Doctor Appointment</option>
-                    <option value="/patientInfo" style="display: none;" id="mh-additional-info">Additional Info</option>
-                    <option value="/role" style="display: none;" id="mh-role">Role</option>
                     <option value="/newRole" style="display: none" id="mh-add-role">Add Role</option>
                     <option value="/employees" style="display: none;" id="mh-employee">Employee</option>
                     <option value="/patientSearch" style="display: none;" id="mh-patients">Patients</option>
@@ -51,7 +49,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
 
         const docAppointment = document.getElementById('mh-doctor-appointment');
-        const addInfo = document.getElementById('mh-additional-info');
         const role = document.getElementById('mh-role');
         const employee = document.getElementById('mh-employee');
         const patients = document.getElementById('mh-patients');
@@ -69,12 +66,6 @@ if (session_status() === PHP_SESSION_NONE) {
         }
         else if(document.URL.includes('/newAppointment')){
             docAppointment.selected = 'true'
-        }
-        else if(document.URL.includes('/patientInfo')){
-            addInfo.selected = 'true'
-        }
-        else if(document.URL.includes('/role')){
-            role.selected = 'true'
         }
         else if(document.URL.includes('/employees')){
             employee.selected = 'true'
@@ -109,8 +100,6 @@ if (session_status() === PHP_SESSION_NONE) {
         //ADMIN
         if(dropdownAccess==1){
             docAppointment.style.display = 'block';
-            addInfo.style.display = 'block';
-            role.style.display = 'block';
             employee.style.display = 'block';
             patients.style.display = 'block';
             regApproval.style.display = 'block';
@@ -122,7 +111,6 @@ if (session_status() === PHP_SESSION_NONE) {
         //SUPERVISOR
         else if(dropdownAccess==2){
             docAppointment.style.display = 'block';
-            addInfo.style.display = 'block';
             employee.style.display = 'block';
             patients.style.display = 'block';
             regApproval.style.display = 'block';
