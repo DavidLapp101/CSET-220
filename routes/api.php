@@ -33,4 +33,10 @@ Route::post('/makePayment', [FinalController::class, 'makePayment']);
 Route::post('/updatePatient', [FinalController::class, 'caregiverUpdatePatient']);
 Route::post('/addRole', [FinalController::class, 'addRole']);
 Route::post('/newRegiment', [FinalController::class, 'newRegiment']);
+
+
+
+Route::post('/assignGroup', [FinalController::class, 'assignGroup']);
+
 Route::post('/viewFamilyTasks', [patientinfoController::class, 'viewFamilyTasks']);
+
