@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\PatientInfo;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -88,14 +90,49 @@ class patientinfoController extends Controller
         return view('admin-report', ['dailyTask' => json_decode(json_encode($dailyTask), true)],['regiments' => $regiments]);
     }
 
+
+    function viewFamilyTasks(Request $request) {
+        $date = $request->input("date");
+        $code = $request->input("family-code");
+        $patient = $request->input("patient-id");
+
+        if ($code == PatientInfo::where("userID", $patient)->first()->familyCode) {
+            $dailyTasks = json_decode(json_encode(DB::select('select doctorID, dailyTasks.patientID, dailytasks.date, dailytasks.docApt, dailytasks.morningMed, dailytasks.afternoonMed, dailytasks.eveningMed, dailytasks.breakfast, dailytasks.lunch, dailytasks.dinner, patientinfo.groupNum, 
+            case 
+            WHEN patientinfo.groupNum = 1 THEN (select name FROM users INNER JOIN schedules ON (users.userID = schedules.groupOneCarer) WHERE schedules.date = "'.$date.'") 
+            WHEN patientinfo.groupNum = 2 THEN (select name FROM users INNER JOIN schedules ON (users.userID = schedules.groupTwoCarer) WHERE schedules.date = "'.$date.'") 
+            WHEN patientinfo.groupNum = 3 THEN (select name FROM users INNER JOIN schedules ON (users.userID = schedules.groupThreeCarer) WHERE schedules.date = "'.$date.'") 
+            WHEN patientinfo.groupNum = 4 THEN (select name FROM users INNER JOIN schedules ON (users.userID = schedules.groupFourCarer) WHERE schedules.date = "'.$date.'") 
+            END AS caretakerID,
+            CASE
+            WHEN doctorID IS NOT NULL THEN (select name FROM users WHERE users.userID=doctorID)
+            END AS doctorName,
+            CASE
+            WHEN dailytasks.patientID IS NOT NULL THEN (select name FROM users WHERE users.userID=dailytasks.patientID)
+            END AS patientName
+            from
+            dailytasks INNER JOIN patientinfo on(patientinfo.userID = dailytasks.patientID) INNER JOIN
+            schedules on(dailytasks.date = schedules.date) LEFT JOIN
+            appointments on (appointments.date = dailytasks.date and appointments.patientID = dailytasks.patientID) where dailytasks.patientID = '.$patient)), true)[0];
+            $regiment = json_decode(json_encode(DB::select('select * from regiments where patientID = '.$patient)), true)[0];
+            return view("landing-page", ['dailyTasks' => $dailyTasks], ['regiment' => $regiment]);
+        }
+        
+        return redirect("/land");
+
+    }
+
+
     public function rolelist(){
         $existingRoles = DB::select('select roleName, accessLevel from roles;');
         return view('new-role', ['roles'=> json_decode(json_encode($existingRoles), true)]);
     }
 
 
+
     public function groupless(){
         $list = DB::select("select patientinfo.userID, users.name from users join patientinfo on(patientinfo.userID=users.userID) where users.accountStatus='approved' and patientinfo.groupNum IS NULL;");
         return view('assign-group', ['groupless' => json_decode(json_encode($list), true)]);
     }
+
 };

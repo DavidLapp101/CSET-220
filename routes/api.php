@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FinalController;
+use App\Http\Controllers\patientinfoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,8 +30,13 @@ Route::post('/changeSalary', [FinalController::class, 'changeSalary']);
 Route::post('/changeSalary', [FinalController::class, 'changeSalary']);
 Route::post('/updateBalance', [FinalController::class, 'updateBalance']);
 Route::post('/makePayment', [FinalController::class, 'makePayment']);
+Route::post('/updatePatient', [FinalController::class, 'caregiverUpdatePatient']);
 Route::post('/addRole', [FinalController::class, 'addRole']);
 Route::post('/newRegiment', [FinalController::class, 'newRegiment']);
 
 
+
 Route::post('/assignGroup', [FinalController::class, 'assignGroup']);
+
+Route::post('/viewFamilyTasks', [patientinfoController::class, 'viewFamilyTasks']);
+

@@ -4,3 +4,9 @@ p {
     text-align: center;
 }
 
+.container {
+    background-color: rgb(17, 95, 114);
+    margin: 50px;
+    padding: 30px;
+    float: center;
+}
