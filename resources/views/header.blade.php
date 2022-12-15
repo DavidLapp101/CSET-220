@@ -107,6 +107,7 @@ if (session_status() === PHP_SESSION_NONE) {
             adminReport.style.display = 'block';
             payment.style.display = 'block';
             addRole.style.display = 'block';
+            assignGroup.style.display = "block";
         }
         //SUPERVISOR
         else if(dropdownAccess==2){
@@ -115,6 +116,7 @@ if (session_status() === PHP_SESSION_NONE) {
             patients.style.display = 'block';
             regApproval.style.display = 'block';
             newRoster.style.display = 'block';
+            assignGroup.style.display = "block";
         }
         //DOCTOR
         else if(dropdownAccess==3){
