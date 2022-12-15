@@ -95,7 +95,7 @@ class FinalController extends Controller
         $action = $request->input('approve/decline');
         if($action == 'accept'){
             User::where('userID', $user)->update(['accountStatus' => "approved"]);
-            PatientInfo::where('userID', $user) ->update(['admissionDate' => date('Y-m-d')]);
+            PatientInfo::where('userID', $user) ->update(['admissionDate' => date('Y-m-d'), 'lastBalanceUpdate' => date('Y-m-d')]);
         }
         else{
             User::where('userID', $user)->update(['accountStatus' => "declined"]);
@@ -223,7 +223,7 @@ class FinalController extends Controller
             }
 
             PatientInfo::where('userID', $patients[$i]->userID)->update(['balance' => $balance, 'lastBalanceUpdate' => date('Y-m-d')]);
-            return redirect('payments');
+            return redirect('/payments');
 
            
 

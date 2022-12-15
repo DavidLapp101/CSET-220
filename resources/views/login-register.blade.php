@@ -52,8 +52,8 @@
                         }
                     }
                 ?>
-                <input type="text" name="login-email" id="login-email" placeholder="Email">
-                <input type="password" name="login-pass" id="login-pass" placeholder="Password">
+                <input type="text" name="login-email" id="login-email" placeholder="Email" required>
+                <input type="password" name="login-pass" id="login-pass" placeholder="Password" required>
                 <input type="submit" name="Submit">
             </form>
         </div>
