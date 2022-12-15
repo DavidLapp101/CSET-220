@@ -223,11 +223,8 @@ class FinalController extends Controller
             }
 
             PatientInfo::where('userID', $patients[$i]->userID)->update(['balance' => $balance, 'lastBalanceUpdate' => date('Y-m-d')]);
-            return redirect('payments');
-
-           
-
-        }
+         }
+        return redirect('payments');
         
     }
 
