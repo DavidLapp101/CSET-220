@@ -47,7 +47,7 @@
             ?>
             <input type="text" name="comment" id="comment" placeholder="Notes/Comments">
             <select name="morningMed" id="morningMed">
-                <option value=null selected>None</option>
+                <option value="" selected>None</option>
                 <?php
                     for ($i=0; $i<count($medications); $i++) {
                         echo "<option value='".$medications[$i]['medicationID']."'>".$medications[$i]["medicationName"]."</option>";
@@ -55,7 +55,7 @@
                 ?>
             </select>
             <select name="afternoonMed" id="afternoonMed">
-                <option value=null selected>None</option>
+                <option value="" selected>None</option>
                 <?php
                     for ($i=0; $i<count($medications); $i++) {
                         echo "<option value='".$medications[$i]['medicationID']."'>".$medications[$i]["medicationName"]."</option>";
@@ -63,7 +63,7 @@
                 ?>
             </select>
             <select name="eveningMed" id="eveningMed">
-                <option value=null selected>None</option>
+                <option value="" selected>None</option>
                 <?php
                     for ($i=0; $i<count($medications); $i++) {
                         echo "<option value='".$medications[$i]['medicationID']."'>".$medications[$i]["medicationName"]."</option>";

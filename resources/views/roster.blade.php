@@ -31,19 +31,21 @@
                     else{
                         $i = date("Y-m-d");
                     }
-                    $findDate=0;
+                    $findDate="";
                     for($k=0; $k<count($supervisor); $k++){
                         if($supervisor[$k]['date']==$i){
                             $findDate=$k;
                         }
                     }
-                    echo "<td>".$supervisor[$findDate]['name']."</td>";
-                    echo "<td>".$doc1[$findDate]['name']."</td>";
-                    echo "<td>".$doc2[$findDate]['name']."</td>";
-                    echo "<td>".$care1[$findDate]['name']."</td>";
-                    echo "<td>".$care2[$findDate]['name']."</td>";
-                    echo "<td>".$care3[$findDate]['name']."</td>";
-                    echo "<td>".$care4[$findDate]['name']."</td>";
+                    if ($findDate != "") {
+                        echo "<td>".$supervisor[$findDate]['name']."</td>";
+                        echo "<td>".$doc1[$findDate]['name']."</td>";
+                        echo "<td>".$doc2[$findDate]['name']."</td>";
+                        echo "<td>".$care1[$findDate]['name']."</td>";
+                        echo "<td>".$care2[$findDate]['name']."</td>";
+                        echo "<td>".$care3[$findDate]['name']."</td>";
+                        echo "<td>".$care4[$findDate]['name']."</td>";
+                    }
                 ?>
             </tr>
         </table>

@@ -17,27 +17,11 @@ html {
     float: center;
 }
 
-.search-filter {
-    margin: 50px;
-    text-align: center;
-
-}
-
 p {
     font-size: larger;
     margin: 20px;
     text-align: center;
 }
-
-select[id=patientSearch] {
-    padding: 5px;
-    background-color: rgb(194, 230, 217);
-    font-size: 15px;
-    font-weight: 50;
-    width: 100px;
-    float: left;
-}
-
 
 input[type=text] {
     padding: 5px;
@@ -52,9 +36,26 @@ th {
     font-size: medium;
     color: rgb(29, 2, 2);
     float: center;
-    
+}
+
+select[name=accessLevel] {
+    padding: 5px;
+    background-color: rgb(194, 230, 217);
+    font-size: 15px;
+    font-weight: 50;
+    width: 50px;
+
+}
+
+input[type=submit] {
+    padding: 5px;
+    background-color: rgb(194, 230, 217);
+    font-size: 15px;
+    width: 100px;
+    border: none;
 }
 
 td {
+    padding: 5px;
     text-align: center;
 }

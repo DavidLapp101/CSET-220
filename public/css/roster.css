@@ -44,3 +44,7 @@ th {
     font-size: large;
     color: rgb(29, 2, 2);
 }
+
+td {
+    text-align: center;
+}

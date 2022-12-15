@@ -27,6 +27,7 @@
 
     <script>
         var patNames = JSON.parse('<?php echo json_encode($pat) ?>');
+        console.log(patNames);
         name = document.getElementById('name');
         function checkName(val){
             for(let i=0; i<patNames.length; i++){
@@ -39,13 +40,12 @@
         var doc1 = JSON.parse('<?php echo json_encode($doc1) ?>')
         var doc2 = JSON.parse('<?php echo json_encode($doc2) ?>')
         console.log(doc1);
-        console.log(doc2)
+        console.log(doc2);
         var x = document.getElementById("doctorID");
         var option = document.createElement("option");
         var option2 = document.createElement("option");
         function checkDate(val){
             for(let i=0; i<doc1.length; i++){
-                console.log('hello')
                 if(doc1[i]['date'] == val){
                     option.text=doc1[i]['name'];
                     option.value=doc1[i]['userID'];

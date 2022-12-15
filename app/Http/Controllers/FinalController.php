@@ -95,7 +95,16 @@ class FinalController extends Controller
         $action = $request->input('approve/decline');
         if($action == 'accept'){
             User::where('userID', $user)->update(['accountStatus' => "approved"]);
-            PatientInfo::where('userID', $user) ->update(['admissionDate' => date('Y-m-d')]);
+            PatientInfo::where('userID', $user) ->update(['admissionDate' => date('Y-m-d'), 'lastBalanceUpdate' => date('Y-m-d')]);
+            Regiment::create([
+                'doctorID' => null,
+                'patientID' => $user,
+                'date' => date('Y-m-d'),
+                'comment' => "default blank regiment",
+                'morningMed' => null,
+                'afternoonMed' => null,
+                'eveningMed' => null
+            ]);
         }
         else{
             User::where('userID', $user)->update(['accountStatus' => "declined"]);
@@ -164,7 +173,7 @@ class FinalController extends Controller
             return redirect('/employees');
         }
         else{
-            echo "somethin";
+            return redirect('/employees');
         }
     }
 
@@ -223,8 +232,13 @@ class FinalController extends Controller
             }
 
             PatientInfo::where('userID', $patients[$i]->userID)->update(['balance' => $balance, 'lastBalanceUpdate' => date('Y-m-d')]);
-         }
-        return redirect('payments');
+
+
+           
+
+        }
+        return redirect('/payments');
+
         
     }
 
@@ -260,9 +274,9 @@ class FinalController extends Controller
     public function newRegiment(Request $request) {
         $patient = $request->input("patientID");
         $comment = $request->input('comment');
-        $morning = $request->input('morningMed');
-        $afternoon = $request->input('afternoonMed');
-        $evening = $request->input('eveningMed');
+        $morning = $request->input('morningMed') == "" ? null : $request->input('morningMed');
+        $afternoon = $request->input('afternoonMed') == "" ? null : $request->input('afternoonMed');
+        $evening = $request->input('eveningMed') == "" ? null : $request->input('eveningMed');
         Regiment::create([
             "doctorID" => $_SESSION["userID"],
             "patientID" => $patient,

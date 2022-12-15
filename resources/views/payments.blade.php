@@ -24,6 +24,7 @@
                 }
             ?>
             </table>
+            <br><br>
             <input type="number" name="paymentAmount" id="paymentAmount" placeholder="Payment Amount">
             <input type="submit" value="OK" name="" id="">
             <a href="">Cancel</a>
@@ -38,7 +39,7 @@
         function patientBalance(value) {
             $(".userBalance").each(function() {
                 if ($(this).hasClass("userBalance-"+value)) {
-                    $(this).css("display", "block");
+                    $(this).css("display", "table-row");
                 }
                 else {
                     $(this).css("display", "none");

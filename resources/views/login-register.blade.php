@@ -52,8 +52,8 @@
                         }
                     }
                 ?>
-                <input type="text" name="login-email" id="login-email" placeholder="Email">
-                <input type="password" name="login-pass" id="login-pass" placeholder="Password">
+                <input type="text" name="login-email" id="login-email" placeholder="Email" required>
+                <input type="password" name="login-pass" id="login-pass" placeholder="Password" required>
                 <input type="submit" name="Submit">
             </form>
         </div>
@@ -68,7 +68,7 @@
                         use App\Models\Role;
                         $roles = json_decode(json_encode(Role::all()), true);
                             for ($i=0; $i<count($roles); $i++) {
-                                echo "<option value='".$roles[$i]["roleID"]."'>".$roles[$i]["roleName"]."</option>";
+                                echo "<option value=".$roles[$i]["roleID"].">".$roles[$i]["roleName"]."</option>";
                             }
                         ?>
                     </select>
