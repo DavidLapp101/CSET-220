@@ -26,7 +26,7 @@
 
 
     <script>
-        var patNames = JSON.parse(('<?php echo json_encode($pat) ?>').replace("'". "\'"));
+        var patNames = JSON.parse('<?php echo json_encode($pat) ?>');
         console.log(patNames);
         name = document.getElementById('name');
         function checkName(val){
@@ -40,7 +40,7 @@
         var doc1 = JSON.parse('<?php echo json_encode($doc1) ?>')
         var doc2 = JSON.parse('<?php echo json_encode($doc2) ?>')
         console.log(doc1);
-        console.log(doc2)
+        console.log(doc2);
         var x = document.getElementById("doctorID");
         var option = document.createElement("option");
         var option2 = document.createElement("option");
